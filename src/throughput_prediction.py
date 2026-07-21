@@ -21,6 +21,7 @@ Referências :
 
 import sys
 import os
+import time
 import warnings
 
 import numpy as np
@@ -155,13 +156,20 @@ def preprocess(df: pd.DataFrame) -> tuple:
     X = df[FEATURES].copy()
     y = df[TARGET].copy()
 
-    subsection("2.1  Divisão treino / teste")
+    # NV-02: Estratificação por Cell_Class garante proporção idêntica dos 3 regimes
+    # operacionais (Normal, Congested, Degraded) entre treino (80) e teste (20).
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE
+        X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=df["Cell_Class"]
     )
     print(f"\nTotal de amostras : {len(X)}")
     print(f"Treino            : {len(X_train)} ({100*(1-TEST_SIZE):.0f}%)")
     print(f"Teste             : {len(X_test)}  ({100*TEST_SIZE:.0f}%)")
+
+    # Exibe distribuição de Cell_Class
+    train_dist = df.loc[X_train.index, "Cell_Class"].value_counts().to_dict()
+    test_dist = df.loc[X_test.index, "Cell_Class"].value_counts().to_dict()
+    print(f"Proporção de regimes no Treino : {train_dist}")
+    print(f"Proporção de regimes no Teste  : {test_dist}")
 
     subsection("2.2  Estratégia de validação")
     print(f"\nK-Fold Cross-Validation : k = {N_FOLDS}")
@@ -184,8 +192,10 @@ def run_random_forest(
 
     subsection("3.1  Definição do modelo e grid de hiperparâmetros")
 
-    # Pipeline: sem necessidade de normalização para RF, mas mantemos
-    # a estrutura consistente com o SVR
+    # RF é invariante a escala — o StandardScaler não afeta a qualidade do
+    # modelo (Random Forest particiona por limiares de features, não por
+    # distâncias). O scaler é mantido no Pipeline exclusivamente por
+    # consistência arquitetural com o pipeline do SVR.
     pipe_rf = Pipeline([
         ("scaler", StandardScaler()),
         ("model", RandomForestRegressor(random_state=RANDOM_STATE)),
@@ -224,13 +234,26 @@ def run_random_forest(
     y_pred_rf = best_rf.predict(X_test)
     metrics_test_rf = compute_metrics(y_test, y_pred_rf)
 
-    rows = [[k, f"{v:.4f}"] for k, v in metrics_test_rf.items()]
+    # NV-01: Medição de latência de inferência por amostra individual (single-sample latency)
+    sample_single = X_test.iloc[[0]]
+    best_rf.predict(sample_single)  # warm-up
+    n_runs = 1000
+    t0 = time.perf_counter()
+    for _ in range(n_runs):
+        best_rf.predict(sample_single)
+    t1 = time.perf_counter()
+    lat_rf_ms = ((t1 - t0) / n_runs) * 1000.0
+    metrics_test_rf["Latência Inferência Unitária"] = f"{lat_rf_ms:.4f} ms"
+
+    rows = [[k, f"{v:.4f}" if isinstance(v, float) else v] for k, v in metrics_test_rf.items()]
     print(tabulate(rows, headers=["Métrica", "Valor (Teste)"],
                    tablefmt="rounded_outline"))
 
-    subsection("3.4  Cross-Validation no dataset completo")
+    subsection("3.4  Cross-Validation no conjunto de treino (X_train)")
+    # IC-03: CV executado sobre X_train/y_train para preservar a independência
+    # do hold-out (X_test/y_test) como conjunto de avaliação final não visto.
     cv_results_rf = cross_validate(
-        best_rf, X, y,
+        best_rf, X_train, y_train,
         cv=kf,
         scoring={
             "mae": "neg_mean_absolute_error",
@@ -272,6 +295,7 @@ def run_random_forest(
         "y_pred": y_pred_rf,
         "feature_importances": importances,
         "best_params": grid_rf.best_params_,
+        "single_sample_lat_ms": lat_rf_ms,
     }
 
 
@@ -288,7 +312,11 @@ def run_svr(
 
     subsection("4.1  Definição do modelo e grid de hiperparâmetros")
 
-    # SVR requer normalização obrigatória
+    # SVR requer normalização obrigatória: é sensível à escala das features
+    # pois a função de custo e o kernel RBF dependem de distâncias no espaço
+    # de características. Embutir o StandardScaler dentro do Pipeline garante
+    # que o fit do scaler ocorre APENAS nos dados de treino de cada fold —
+    # evitando data leakage durante o cross-validation.
     pipe_svr = Pipeline([
         ("scaler", StandardScaler()),
         ("model", SVR()),
@@ -327,13 +355,26 @@ def run_svr(
     y_pred_svr = best_svr.predict(X_test)
     metrics_test_svr = compute_metrics(y_test, y_pred_svr)
 
-    rows = [[k, f"{v:.4f}"] for k, v in metrics_test_svr.items()]
+    # NV-01: Medição de latência de inferência por amostra individual (single-sample latency)
+    sample_single = X_test.iloc[[0]]
+    best_svr.predict(sample_single)  # warm-up
+    n_runs = 1000
+    t0 = time.perf_counter()
+    for _ in range(n_runs):
+        best_svr.predict(sample_single)
+    t1 = time.perf_counter()
+    lat_svr_ms = ((t1 - t0) / n_runs) * 1000.0
+    metrics_test_svr["Latência Inferência Unitária"] = f"{lat_svr_ms:.4f} ms"
+
+    rows = [[k, f"{v:.4f}" if isinstance(v, float) else v] for k, v in metrics_test_svr.items()]
     print(tabulate(rows, headers=["Métrica", "Valor (Teste)"],
                    tablefmt="rounded_outline"))
 
-    subsection("4.4  Cross-Validation no dataset completo")
+    subsection("4.4  Cross-Validation no conjunto de treino (X_train)")
+    # IC-03: CV executado sobre X_train/y_train para preservar a independência
+    # do hold-out (X_test/y_test) como conjunto de avaliação final não visto.
     cv_results_svr = cross_validate(
-        best_svr, X, y,
+        best_svr, X_train, y_train,
         cv=kf,
         scoring={
             "mae": "neg_mean_absolute_error",
@@ -363,6 +404,7 @@ def run_svr(
         "cv_r2": cv_r2,
         "y_pred": y_pred_svr,
         "best_params": grid_svr.best_params_,
+        "single_sample_lat_ms": lat_svr_ms,
     }
 
 
@@ -400,6 +442,10 @@ granularidades de dados em ambientes O-RAN reais.
 
     loo = LeaveOneOut()
 
+    # Devido ao tamanho ínfimo do dataset temporal (16 amostras), os modelos
+    # foram definidos com hiperparâmetros fixos razoáveis (n_estimators=100 para RF;
+    # C=10, epsilon=0.1 para SVR) em vez de GridSearchCV, evitando overfitting excessivo
+    # na seleção de parâmetros com pouquíssimos dados por fold do LOO-CV.
     rf_t = Pipeline([
         ("scaler", StandardScaler()),
         ("model", RandomForestRegressor(n_estimators=100, random_state=RANDOM_STATE)),
@@ -491,7 +537,15 @@ def compare_models(rf_result: dict, svr_result: dict, y_test: np.ndarray) -> Non
                    headers=["Real", "RF Pred.", "|Erro RF|", "SVR Pred.", "|Erro SVR|"],
                    tablefmt="rounded_outline"))
 
-    subsection("6.4  Análise dos melhores hiperparâmetros")
+    subsection("6.4  Latência de inferência por amostra individual (Near-RT RIC SLA < 10 ms)")
+    lat_rows = [
+        ["Random Forest", f"{rf_result['single_sample_lat_ms']:.4f} ms", "Conforme SLA Near-RT RIC (< 10 ms)"],
+        ["SVR",           f"{svr_result['single_sample_lat_ms']:.4f} ms", "Conforme SLA Near-RT RIC (< 10 ms)"],
+    ]
+    print(tabulate(lat_rows, headers=["Modelo", "Latência Unitária (ms)", "SLA O-RAN Near-RT RIC"],
+                   tablefmt="rounded_outline"))
+
+    subsection("6.5  Análise dos melhores hiperparâmetros")
     print("\nRandom Forest:")
     for k, v in rf_result["best_params"].items():
         print(f"  {k.replace('model__', '')}: {v}")

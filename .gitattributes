@@ -1,0 +1,5 @@
+# Padronização de terminação de linha para o repositório MLRan
+* text=auto eol=lf
+*.csv text eol=lf
+*.py text eol=lf
+*.md text eol=lf

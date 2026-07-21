@@ -103,9 +103,11 @@ O script executa automaticamente todas as etapas:
 | `numpy` | 2.2.6 | Operações numéricas |
 | `pandas` | 2.2.3 | Manipulação de dados |
 | `scikit-learn` | 1.6.1 | Modelos ML, pipelines, métricas |
-| `matplotlib` | 3.10.3 | Visualização (disponível para extensões) |
-| `seaborn` | 0.13.2 | Visualização estatística (disponível para extensões) |
+| `matplotlib` | 3.10.3 | Visualização gráfico-estatística *(opcional — suporte a extensões visuais)* |
+| `seaborn` | 0.13.2 | Visualização estatística *(opcional — suporte a extensões visuais)* |
 | `tabulate` | 0.9.0 | Formatação de tabelas no terminal |
+
+> **Nota**: `matplotlib` e `seaborn` são bibliotecas de suporte a visualização gráfica. O script principal (`src/throughput_prediction.py`) imprime todas as métricas formatadas via terminal (`tabulate`), sem gerar figuras em arquivos por padrão, tornando a instalação de `matplotlib`/`seaborn` opcional para execução base.
 
 ## Datasets
 
@@ -116,26 +118,25 @@ O script executa automaticamente todas as etapas:
 
 ## Resultados Resumidos
 
-### Métricas no Conjunto de Teste (20%)
+### Métricas no Conjunto de Teste (20% Estratificado por `Cell_Class`)
 
 | Modelo | MAE | RMSE | R² |
 |---|---|---|---|
-| Random Forest | 21.64 Mbps | 26.11 Mbps | 0.7847 |
-| SVR | 23.42 Mbps | 29.22 Mbps | 0.7302 |
+| Random Forest | 33.47 Mbps | 38.70 Mbps | 0.6379 |
+| **SVR** | **32.42 Mbps** | **36.41 Mbps** | **0.6795** |
 
-### Cross-Validation k=5
+### Cross-Validation k=5 (Conjunto de Treino — 80%)
 
 | Modelo | R² CV | 
 |---|---|
-| Random Forest | 0.6266 ± 0.1928 |
-| SVR | 0.6036 ± 0.2210 |
+| **Random Forest** | **0.6837 ± 0.1265** |
+| SVR | 0.6835 ± 0.1111 |
 
 > Para a análise completa, consulte [`docs/relatorio_analise.md`](docs/relatorio_analise.md).
 
 ## Referências
 
 - O-RAN Alliance. (2026). *O-RAN WG1 Use Cases Detailed Specification v20.00*
-- O-RAN Alliance. (2021). *O-RAN WG2 AI/ML Workflow Description and Requirements 1.03*
+- O-RAN Alliance. (2021). *O-RAN WG2 AI/ML Workflow Description and Requirements 1.03* *(versão de referência do curso; revisões posteriores formalizaram Model Training Host, Model Serving Host e Model Repository)*
 - Burkov, A. (2019). *The Hundred-Page Machine Learning Book*
-- Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*
 - 3GPP. (2025). *AI/ML for NG-RAN* — https://www.3gpp.org/news-events/3gpp-news/ai-ml-2025

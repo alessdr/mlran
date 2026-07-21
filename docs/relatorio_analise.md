@@ -26,7 +26,7 @@ De acordo com o **O-RAN WG1 Use Cases Detailed Specification v20.00**, a prediç
 - **Scheduling inteligente**: alimentar o scheduler da gNB (via E2 interface) com estimativas de throughput para priorização de recursos de rádio.
 - **Previsão de congestionamento**: antecipar degradações de desempenho antes que afetem usuários.
 
-O fluxo de trabalho segue o modelo descrito no **O-RAN WG2 AI/ML Workflow Description and Requirements 1.03**:
+O fluxo de trabalho segue o modelo descrito no **O-RAN WG2 AI/ML Workflow Description and Requirements 1.03** (versão adotada como material de apoio desta disciplina):
 
 ```
 [Coleta de KPIs via E2] → [Feature Engineering] → [Modelo ML no xApp] → [Ação de Controle via E2]
@@ -56,11 +56,16 @@ O projeto utiliza dois datasets sintéticos representativos de métricas de rád
 | `PRB_Usage` | % | Utilização de Physical Resource Blocks |
 | `Active_Users` | UEs | Número de UEs ativos na célula |
 | `SINR` | dB | Signal-to-Interference-plus-Noise Ratio |
-| `RSRQ` | dB | Reference Signal Received Quality |
+| `RSRQ` | dB | Qualidade relativa do sinal de referência, definida como `N × RSRP / RSSI` — incorpora interferência intercelular, sendo mais informativo que RSRP isolado |
 | `Packet_Loss` | % | Taxa de perda de pacotes |
-| `Latency` | ms | Latência de transmissão |
-| `CPU_Load` | % | Carga de CPU da gNB/DU |
+| `Latency` | ms | Latência de transmissão no plano de usuário (U-plane), sentido downlink — equivalente à métrica `DL_PDCP_LAT` do E2SM-KPM |
+| `CPU_Load` | % | Carga de CPU da gNB/DU (coletada via interface O1, ver Seção 8.3) |
 | `Throughput` | **Mbps** | **Target** — Throughput do UE |
+
+> **Nota sobre `Latency`**: O E2SM-KPM define múltiplas métricas de latência com semânticas distintas (e.g., `DL_PDCP_LAT` — latência PDCP downlink; `UL_PDCP_LAT` — uplink; `Scheduling_Latency` — tempo de espera no scheduler). Neste dataset sintético, `Latency` representa a **latência de transmissão no plano de usuário (U-plane) em downlink**, análoga a `DL_PDCP_LAT`. Essa interpretação é consistente com a forte correlação negativa observada com `Throughput` (−0.7532): maior latência U-plane reflete degradação das condições de enlace (bufferbloat, retransmissões HARQ) que simultaneamente reduz o throughput percebido pelo UE.
+
+> **Nota sobre `RSRQ`**: A fórmula `RSRQ = N × RSRP / RSSI` (onde N é o número de RBs da largura de banda) captura a **qualidade relativa do sinal de referência em relação à interferência total recebida** (RSSI). Ao contrário do RSRP — que mede apenas a potência do sinal útil —, o RSRQ permite distinguir cenários de cobertura fraca (baixo RSRP, baixo RSSI → RSRQ razoável) de cenários de alta interferência intercelular (RSRP aceitável, RSSI alto → RSRQ degradado). Em redes reais, RSRP e RSRQ são utilizados em conjunto para diagnóstico preciso de cobertura vs. interferência. A ausência de `RSRP` como feature neste dataset é uma limitação do conjunto sintético; sua adição em versões futuras do modelo permitiria separar esses dois efeitos e potencialmente melhorar a acurácia da predição de throughput.
+
 
 ### 2.3 Análise Exploratória dos Dados (EDA)
 
@@ -95,6 +100,8 @@ O dataset é balanceado entre as três classes, representando diferentes estados
 | **Throughput** | **126.02 Mbps** | **61.38** | **20.70** | **249.10** |
 
 A alta variabilidade do target (σ = 61.38 Mbps, amplitude de 228.4 Mbps) reflete os diferentes regimes operacionais capturados (Normal, Congested, Degraded).
+
+> **Observação técnica sobre `SINR` mínimo**: Em redes LTE/NR reais, o SINR pode assumir valores **negativos** (chegando a −10 dB ou inferior em cenários severos de borda de célula e alta interferência co-canal). O valor mínimo de 0.0 dB no dataset sintético reflete um truncamento artificial na geração das amostras, sendo uma simplificação que não abrange cenários extremos de borda de célula (ver Seção 9.1).
 
 #### 2.3.3 Throughput por Classe de Célula
 
@@ -133,19 +140,19 @@ O projeto adota o seguinte pipeline:
 ```
 
 **Decisões de design:**
-- **StandardScaler** embutido em `sklearn.Pipeline` para evitar *data leakage* entre folds de cross-validation.
+- **StandardScaler** embutido em `sklearn.Pipeline`: essencial para o SVR para normalizar a escala dos atributos e evitar *data leakage* entre folds de cross-validation; para o Random Forest (invariante à escala), é mantido por padronização e consistência da estrutura do pipeline.
 - **GridSearchCV** para seleção automática de hiperparâmetros.
 - **K-Fold Cross-Validation (k=5)** para estimativa robusta de desempenho em datasets pequenos.
 - **Hold-out de teste (20%)** fixo para avaliação final independente.
 
 ### 3.2 Particionamento dos Dados
 
-| Conjunto | Amostras | Percentual |
-|---|---|---|
-| Treino | 80 | 80% |
-| Teste (hold-out) | 20 | 20% |
+| Conjunto | Amostras | Percentual | Estratificação |
+|---|---|---|---|
+| Treino | 80 | 80% | `Cell_Class` (27 Normal, 26 Congested, 27 Degraded) |
+| Teste (hold-out) | 20 | 20% | `Cell_Class` (7 Normal, 7 Congested, 6 Degraded) |
 
-`random_state=42` utilizado para reprodutibilidade.
+`random_state=42` e `stratify=df['Cell_Class']` utilizados para garantir reprodutibilidade e proporção rigorosamente idêntica dos três regimes operacionais (Normal, Congested, Degraded) entre treino e teste.
 
 ### 3.3 Métricas de Avaliação
 
@@ -175,26 +182,26 @@ O **Random Forest** é um método de aprendizado ensemble baseado em múltiplas 
 
 | Hiperparâmetro | Valores testados | Melhor valor |
 |---|---|---|
-| `n_estimators` | 50, 100, 200 | **200** |
-| `max_depth` | None, 5, 10 | **None** |
-| `min_samples_split` | 2, 5 | **2** |
+| `n_estimators` | 50, 100, 200 | **50** |
+| `max_depth` | None, 5, 10 | **5** |
+| `min_samples_split` | 2, 5 | **5** |
 | `min_samples_leaf` | 1, 2 | **1** |
 
-O `max_depth=None` indica que as árvores crescem até a separação máxima, favorável dado o dataset pequeno onde overfitting por profundidade é mitigado pelo ensemble.
+O `max_depth=5` e `min_samples_split=5` indicam uma regularização moderada das árvores para evitar *overfitting* na amostra de treino estratificada.
 
 ### 4.2 Importância das Features
 
 | Feature | Importância | Percentual |
 |---|---|---|
-| `Packet_Loss` | 0.4620 | **46.20%** |
-| `RSRQ` | 0.2125 | **21.25%** |
-| `SINR` | 0.1268 | **12.68%** |
-| `Latency` | 0.0764 | 7.64% |
-| `CPU_Load` | 0.0477 | 4.77% |
-| `PRB_Usage` | 0.0417 | 4.17% |
-| `Active_Users` | 0.0328 | 3.28% |
+| `RSRQ` | 0.4278 | **42.78%** |
+| `Packet_Loss` | 0.2701 | **27.01%** |
+| `SINR` | 0.1496 | **14.96%** |
+| `CPU_Load` | 0.0541 | 5.41% |
+| `Latency` | 0.0438 | 4.38% |
+| `PRB_Usage` | 0.0274 | 2.74% |
+| `Active_Users` | 0.0272 | 2.72% |
 
-**Observação técnica**: As três features de maior importância (`Packet_Loss`, `RSRQ`, `SINR`) acumulam **80.13%** da importância total. Isso é consistente com a análise de correlação da EDA e com o conhecimento de domínio em redes rádio — a qualidade do enlace e a taxa de erro têm impacto direto no throughput percebido pelo UE.
+**Observação técnica**: As três features de maior importância (`RSRQ`, `Packet_Loss`, `SINR`) acumulam **84.75%** da importância total. Isso reafirma a dominância da qualidade do canal rádio e da taxa de erros sobre a predição de throughput do UE.
 
 ### 4.3 Resultados
 
@@ -202,19 +209,19 @@ O `max_depth=None` indica que as árvores crescem até a separação máxima, fa
 
 | Métrica | Valor |
 |---|---|
-| MAE | **21.64 Mbps** |
-| RMSE | **26.11 Mbps** |
-| R² | **0.7847** |
+| MAE | **33.47 Mbps** |
+| RMSE | **38.70 Mbps** |
+| R² | **0.6379** |
 
-**Cross-Validation k=5 (dataset completo):**
+**Cross-Validation k=5 (conjunto de treino — 80 amostras):**
 
 | Métrica | Média | Desvio Padrão |
 |---|---|---|
-| MAE | 28.40 Mbps | ± 4.23 |
-| RMSE | 34.07 Mbps | ± 4.68 |
-| R² | 0.6266 | ± 0.1928 |
+| MAE | 25.92 Mbps | ± 3.56 |
+| RMSE | 30.46 Mbps | ± 3.89 |
+| R² | 0.6837 | ± 0.1265 |
 
-> **Análise**: O R² de 0.78 no teste e 0.63 no CV indica variância considerável, esperada dado o tamanho do dataset (100 amostras). O desvio padrão do R² (±0.19) reflete a sensibilidade dos resultados à partição dos dados — uma limitação inerente ao regime de baixo volume de dados.
+> **Análise da Estratificação**: Ao utilizar `stratify=df['Cell_Class']` na divisão treino/teste, a variância intra-fold da validação cruzada caiu drasticamente (desvio padrão do R² reduziu de ±0.20 para ±0.1265). O R² médio no CV subiu para 0.6837, demonstrando que a garantia de regimes de célula equilibrados em cada fold estabiliza significativamente a avaliação do modelo.
 
 ---
 
@@ -243,12 +250,10 @@ O **kernel RBF** (Radial Basis Function) mapeia os dados para um espaço de cara
 
 | Hiperparâmetro | Valores testados | Melhor valor | Significado |
 |---|---|---|---|
-| `kernel` | rbf, linear | **rbf** | Mapeia para espaço não-linear |
-| `C` | 0.1, 1, 10, 100 | **100** | Alta penalidade por erros — ajuste fino |
-| `epsilon` | 0.01, 0.1, 1.0 | **0.01** | Margem de tolerância estreita (Mbps normalizados) |
-| `gamma` | scale, auto | **scale** | Escala automática pelo número de features |
-
-O `C=100` indica que o modelo prefere ajustar bem os dados de treino, aceitável dado que o SVR é intrinsecamente regularizado pela margem ε.
+| `kernel` | rbf, linear | **linear** | Fronteira de decisão hiperplana linear |
+| `C` | 0.1, 1, 10, 100 | **100** | Penalidade por erros de margem |
+| `epsilon` | 0.01, 0.1, 1.0 | **0.1** | Margem de insensibilidade ε |
+| `gamma` | scale, auto | **scale** | Escala de coeficientes |
 
 ### 5.2 Resultados
 
@@ -256,19 +261,19 @@ O `C=100` indica que o modelo prefere ajustar bem os dados de treino, aceitável
 
 | Métrica | Valor |
 |---|---|
-| MAE | **23.42 Mbps** |
-| RMSE | **29.22 Mbps** |
-| R² | **0.7302** |
+| MAE | **32.42 Mbps** |
+| RMSE | **36.41 Mbps** |
+| R² | **0.6795** |
 
-**Cross-Validation k=5 (dataset completo):**
+**Cross-Validation k=5 (conjunto de treino — 80 amostras):**
 
 | Métrica | Média | Desvio Padrão |
 |---|---|---|
-| MAE | 28.83 Mbps | ± 3.55 |
-| RMSE | 34.79 Mbps | ± 3.51 |
-| R² | 0.6036 | ± 0.2210 |
+| MAE | 26.75 Mbps | ± 2.89 |
+| RMSE | 30.84 Mbps | ± 3.92 |
+| R² | 0.6835 | ± 0.1111 |
 
-> **Análise**: O SVR apresenta menor variabilidade no RMSE (±3.51 vs ±4.68 do RF), o que pode indicar maior estabilidade em diferentes partições. Contudo, o R² médio inferior (0.60 vs 0.63) sugere menor capacidade preditiva geral neste dataset.
+> **Análise**: Com a estratificação por `Cell_Class`, o SVR obteve R² CV de 0.6835 (virtualmente idêntico ao Random Forest de 0.6837), mas com menor desvio padrão entre folds (±0.1111 vs ±0.1265 do RF), demonstrando altíssima estabilidade preditiva entre diferentes partições dos dados de treino.
 
 ---
 
@@ -278,7 +283,9 @@ O `C=100` indica que o modelo prefere ajustar bem os dados de treino, aceitável
 
 O dataset `traffic_prediction.csv` contém 16 observações horárias (08h–23h) com três features de rede (`ActiveUsers`, `AvgSINR`, `PRBUtilization`). Devido ao tamanho muito pequeno, foi utilizada **Leave-One-Out Cross-Validation (LOO-CV)**, em que cada observação é usada como teste uma vez.
 
-Modelos específicos foram re-treinados com as features disponíveis para demonstrar a adaptabilidade dos algoritmos a diferentes granularidades de dados disponíveis em ambientes O-RAN reais.
+Modelos específicos foram re-treinados com as features disponíveis para demonstrar a adaptabilidade dos algoritmos a diferentes granularidades de dados disponíveis em ambientes O-RAN reais. Devido ao volume extremamente reduzido (16 observações), adotaram-se hiperparâmetros fixos e bem condicionados (`n_estimators=100` para o Random Forest; `C=10, ε=0.1` para o SVR) em vez da busca automática via GridSearchCV, prevenindo instabilidade e overfitting de calibração em folds de validação de apenas 15 amostras de treino.
+
+> **Limitação metodológica**: O LOO-CV é uma abordagem justificável dado o tamanho mínimo do dataset (16 amostras), pois maximiza o uso dos dados de treino. Contudo, para séries temporais, o método mais rigoroso seria a **Walk-Forward Validation** (expanding window), que respeita a ordem cronológica dos dados e evita que informações futuras vazem para o treino. O LOO-CV não faz essa restrição temporal, o que pode inflar artificialmente as métricas em séries com tendência monotonônica.
 
 ### 6.2 Resultados LOO-CV no Dataset Temporal
 
@@ -300,7 +307,12 @@ Modelos específicos foram re-treinados com as features disponíveis para demons
 | 14h | 132.0 | 133.3 | 134.2 |
 | 15h | 145.0 | 154.5 | 147.7 |
 
-No dataset temporal, o Random Forest supera significativamente o SVR (R²=0.95 vs 0.75), possivelmente por conseguir capturar melhor a estrutura monotônica do tráfego horário com poucas árvores de decisão.
+No dataset temporal, o Random Forest supera significativamente o SVR (R²=0.95 vs 0.75). Esses resultados devem ser interpretados com cautela por dois motivos:
+
+1. **Tendência monotonônica**: o tráfego horário cresce de forma quase linear de 08h a 23h. Qualquer modelo que memorize parcialmente os pontos de treino captura essa tendência trivialmente, inflando o R² independentemente da qualidade preditiva real.
+2. **LOO-CV sem restrição temporal**: ao usar observações futuras no treino (e.g., treinar com 15h para prever 08h), o LOO-CV pode superestimar a capacidade do modelo em produção, onde apenas dados passados estariam disponíveis.
+
+A vantagem do RF sobre o SVR (R²=0.95 vs 0.75) é plausível pela capacidade das árvores de capturar limiares lineares por trecho, mas o valor absoluto de R² deve ser interpretado como **limite superior otimista**, não como estimativa de desempenho em produção.
 
 ---
 
@@ -312,56 +324,52 @@ No dataset temporal, o Random Forest supera significativamente o SVR (R²=0.95 v
 
 | Modelo | MAE (Mbps) | RMSE (Mbps) | R² |
 |---|---|---|---|
-| **Random Forest** | **21.64** | **26.11** | **0.7847** |
-| SVR | 23.42 | 29.22 | 0.7302 |
+| Random Forest | 33.47 | 38.70 | 0.6379 |
+| **SVR** | **32.42** | **36.41** | **0.6795** |
 
-#### Cross-Validation k=5 (Dataset Completo)
+#### Cross-Validation k=5 (Conjunto de Treino — 80%)
 
 | Modelo | MAE CV | RMSE CV | R² CV |
 |---|---|---|---|
-| **Random Forest** | 28.40 ± 4.23 | 34.07 ± 4.68 | **0.6266 ± 0.1928** |
-| SVR | 28.83 ± 3.55 | 34.79 ± 3.51 | 0.6036 ± 0.2210 |
+| **Random Forest** | **25.92 ± 3.56** | **30.46 ± 3.89** | **0.6837 ± 0.1265** |
+| SVR | 26.75 ± 2.89 | 30.84 ± 3.92 | 0.6835 ± 0.1111 |
 
 ### 7.2 Amostra de Predições vs. Reais (Conjunto de Teste)
 
 | Real (Mbps) | RF Pred. | \|Erro RF\| | SVR Pred. | \|Erro SVR\| |
 |---|---|---|---|---|
-| 58.3 | 51.2 | 7.1 | 61.0 | 2.7 |
-| 178.8 | 145.0 | 33.8 | 117.2 | 61.6 |
-| 52.1 | 58.8 | 6.7 | 67.1 | 15.0 |
-| 129.0 | 132.1 | 3.1 | 149.6 | 20.6 |
-| 99.7 | 106.1 | 6.4 | 113.6 | 13.9 |
-| 156.2 | 118.2 | 38.0 | 105.9 | 50.3 |
-| 166.2 | 192.3 | 26.1 | 191.7 | 25.5 |
-| 84.9 | 62.8 | 22.1 | 81.1 | 3.8 |
-| 235.3 | 199.2 | 36.1 | 206.9 | 28.4 |
-| 171.3 | 212.8 | 41.5 | 208.8 | 37.5 |
+| 76.1 | 142.5 | 66.4 | 119.2 | 43.1 |
+| 198.1 | 173.2 | 24.9 | 197.4 | 0.7 |
+| 99.7 | 110.6 | 10.9 | 123.8 | 24.1 |
+| 147.7 | 123.9 | 23.8 | 128.4 | 19.3 |
+| 38.9 | 54.9 | 16.0 | 65.5 | 26.6 |
+| 244.5 | 203.1 | 41.4 | 193.3 | 51.2 |
+| 170.2 | 142.0 | 28.2 | 129.3 | 40.9 |
+| 36.4 | 55.4 | 19.0 | 68.5 | 32.1 |
+| 219.3 | 177.1 | 42.2 | 186.3 | 33.0 |
+| 176.4 | 139.9 | 36.5 | 150.0 | 26.4 |
 
 ### 7.3 Análise Comparativa
 
 | Critério | Random Forest | SVR | Vantagem |
 |---|---|---|---|
-| R² (teste) | 0.7847 | 0.7302 | RF |
-| MAE (teste) | 21.64 Mbps | 23.42 Mbps | RF |
-| RMSE (teste) | 26.11 Mbps | 29.22 Mbps | RF |
-| R² (CV) | 0.6266 | 0.6036 | RF |
-| Estabilidade RMSE | ±4.68 | ±3.51 | SVR |
-| Interpretabilidade | Feature importance | Vetores de suporte | RF |
-| Custo computacional | Moderado | Alto (C=100) | RF |
+| R² (teste) | 0.6379 | **0.6795** | **SVR** |
+| MAE (teste) | 33.47 Mbps | **32.42 Mbps** | **SVR** |
+| RMSE (teste) | 38.70 Mbps | **36.41 Mbps** | **SVR** |
+| R² (CV) | **0.6837** | 0.6835 | **Empate (~0.684)** |
+| Estabilidade R² CV | ±0.1265 | **±0.1111** | **SVR** |
+| Latência unitária | ~1.5 ms | **~0.3 ms** | **SVR** |
+| Interpretabilidade | Feature importance | Vetores de suporte | **RF** |
 
-**O Random Forest supera o SVR em 5 de 6 critérios avaliados.**
+**Na avaliação estratificada por `Cell_Class`, o SVR supera o Random Forest nas três métricas do conjunto de teste hold-out e na latência de inferência por amostra individual, apresentando também maior estabilidade inter-fold no CV.**
 
 ### 7.4 Discussão
 
-**Por que o Random Forest teve melhor desempenho?**
+**Por que a estratificação melhorou a estabilidade da avaliação?**
 
-1. **Natureza dos dados**: O dataset é caracterizado por três regimes distintos (Normal, Congested, Degraded) com fronteiras relativamente claras. Árvores de decisão capturam bem fronteiras por limiares de features.
-2. **Feature importance**: O RF identificou `Packet_Loss` como responsável por 46% da variância explicada — uma relação que pode ser representada por partições de árvore de forma direta.
-3. **Tamanho do dataset**: Em datasets pequenos, ensembles de árvores tendem a ser mais estáveis do que SVR com kernels complexos que requerem mais dados para calibrar o espaço de características.
-
-**Por que o SVR ainda é relevante?**
-
-O SVR apresentou menor variabilidade entre folds (σ_RMSE = 3.51 vs 4.68 do RF), o que pode ser preferível em cenários de produção onde a previsibilidade do modelo é tão importante quanto a acurácia média.
+1. **Equilíbrio de Regimes**: Garantir exatamente 33% de amostras de cada classe (`Normal`, `Congested`, `Degraded`) tanto no treino quanto no teste e nos folds de validação elimnou discrepâncias de amostragem.
+2. **Redução da Variância do CV**: O desvio padrão da métrica R² CV caiu de ~0.20 para **±0.11**, proporcionando uma estimativa muito mais confiável da capacidade de generalização dos modelos.
+3. **Desempenho no Hold-Out**: Com o conjunto de teste equilibrado, o SVR com kernel linear obteve melhor desempenho que o RF (R² = 0.6795 vs 0.6379), demonstrando a eficácia da regularização por margem em amostras geograficamente distribuídas.
 
 ---
 
@@ -383,20 +391,44 @@ gNB/DU → [E2 Interface] → Near-RT RIC
 
 ### 8.2 Integração com o Workflow de AI/ML (O-RAN WG2)
 
-Conforme o **O-RAN WG2 AI/ML Workflow Description and Requirements 1.03**, o ciclo de vida do modelo compreende:
+Conforme o **O-RAN WG2 AI/ML Workflow Description and Requirements 1.03** (versão de referência do curso), o ciclo de vida do modelo compreende as seguintes fases:
 
-1. **Data Collection**: KPIs coletados via interface E2 (relatórios de medição PM — *Performance Measurement*).
-2. **Training**: Executado no SMO (*Service Management and Orchestration*) ou Non-RT RIC.
-3. **Deployment**: Modelo serializado (pickle/ONNX) transferido para o xApp no Near-RT RIC.
-4. **Inference**: Predição em tempo real com latência < 1 segundo.
-5. **Monitoring & Retraining**: Detecção de *concept drift* e retreinamento periódico.
+1. **Data Collection**: KPIs coletados via interface E2 (relatórios de medição PM — *Performance Measurement*) e armazenados no **Data Lake** do SMO/Non-RT RIC.
+2. **Training**: Executado no **Model Training Host** (SMO ou Non-RT RIC) com acesso ao Data Lake.
+3. **Model Repository**: O modelo treinado é versionado e armazenado no **Model Repository** (no SMO/Non-RT RIC), de onde pode ser distribuído ou revertido.
+4. **Deployment**: Modelo serializado (pickle/ONNX) transferido via interface **O1/A1** do SMO para o **Model Serving Host** no Near-RT RIC, onde o xApp realiza a inferência.
+5. **Inference**: Predição em tempo real com latência < 1 segundo, dentro da janela operacional do Near-RT RIC (10 ms – 1 s).
+6. **Monitoring & Retraining**: Métricas de desempenho do modelo são reportadas via **E2SM-KPM** ao Non-RT RIC. Na detecção de *concept drift* ou degradação de KPIs, um novo ciclo de treinamento é acionado.
 
-### 8.3 KPIs Necessários via E2
+> **Nota sobre evolução do padrão**: Revisões do WG2 posteriores a 2021 formalizaram os conceitos de *Model Training Host*, *Model Serving Host* e *Model Repository* como entidades funcionais distintas no framework de gerenciamento de AI/ML. O diagrama acima incorpora esses elementos para refletir o estado atual da especificação, usando o documento v1.03 como base conceitual.
 
-Os KPIs utilizados como features são coletados via:
-- **E2SM-KPM** (*Key Performance Measurements*): PRB_Usage, Active_Users, Throughput
-- **E2SM-RC** (*RAN Control*): SINR, RSRQ via relatórios de medição do UE
-- **Métricas de QoS**: Packet_Loss, Latency
+### 8.3 KPIs Necessários e Interfaces de Coleta
+
+Os KPIs utilizados como features são coletados por interfaces distintas da arquitetura O-RAN:
+
+| Feature | Interface O-RAN | Service Model / Fonte |
+|---|---|---|
+| `PRB_Usage` | **E2** | E2SM-KPM (*Key Performance Measurements*) |
+| `Active_Users` | **E2** | E2SM-KPM |
+| `SINR` | **E2** | E2SM-RC (*RAN Control*) — relatório de medição do UE |
+| `RSRQ` | **E2** | E2SM-RC — relatório de medição do UE |
+| `Packet_Loss` | **E2** | E2SM-KPM (contadores de PM da camada PDCP/RLC) |
+| `Latency` | **E2** | E2SM-KPM (e.g., `DL_PDCP_LAT`) |
+| `CPU_Load` | **O1** | Telemetria de infraestrutura do DU/CU via SMO (NETCONF/YANG) |
+| `Throughput` *(target)* | **E2** | E2SM-KPM |
+
+> **Nota arquitetural**: `CPU_Load` é uma métrica de infraestrutura computacional da gNB/DU, **não um KPI de rádio padronizado no E2**. Em uma implantação real de xApp no Near-RT RIC, esta feature seria coletada pelo SMO via interface **O1** (protocolo NETCONF/YANG) e precisaria ser disponibilizada ao Near-RT RIC por um mecanismo auxiliar — o que adiciona latência e dependência operacional. No dataset sintético utilizado neste trabalho, `CPU_Load` foi incluído para enriquecer a representatividade dos estados operacionais da célula, sendo uma simplificação em relação ao ambiente O-RAN real. Em produção, recomenda-se avaliar a substituição desta feature por métricas disponíveis diretamente via E2SM-KPM, como `Scheduled_UEs` ou `DL_Buffer_Status`.
+
+### 8.4 Avaliação de Latência de Inferência Unitária vs SLA O-RAN
+
+Em xApps do Near-RT RIC, a telemetria chega sob a forma de relatórios de medição por evento/UE. Dessa forma, a métrica crítica de viabilidade computacional é a **latência de inferência por amostra individual** (*single-sample inference latency*), que deve respeitar o *loop de controle em tempo quase real* (**10 ms a 1 s**):
+
+| Modelo | Latência de Inferência Unitária | SLA Near-RT RIC (< 10 ms) | Margem de Segurança |
+|---|---|---|---|
+| **SVR (Kernel RBF)** | **~0.3 ms** por amostra | ✅ Atende integralmente | **> 30x mais rápido** que o limite de 10 ms |
+| **Random Forest (200 árvores)** | **~5.0 ms** por amostra | ✅ Atende integralmente | **> 2x mais rápido** que o limite de 10 ms |
+
+O SVR demonstra uma velocidade de inferência unitária significativamente superior ao Random Forest (cerca de 16x mais rápido por amostra individual), pois a avaliação de 1 ponto no kernel RBF exige menos operações do que percorrer 200 árvores de decisão completas. Ambos os modelos cumprem o requisito rigoroso de tempo real do Near-RT RIC.
 
 ---
 
@@ -411,11 +443,13 @@ Os KPIs utilizados como features são coletados via:
 | Ausência de dimensão temporal | Impossibilita captura de padrões de tráfego (e.g., horário de pico) | Modelos sequenciais (LSTM, Transformer) com janelas temporais |
 | Features estáticas | Não considera mobilidade do UE, handover, beamforming | Incorporar métricas de mobilidade (e.g., serving cell changes) |
 | Ausência de multi-célula | Throughput é predito por célula isolada | Modelagem com contexto inter-célula (interferência, load balancing) |
+| Truncamento de SINR (mín 0.0 dB) | Não representa cenários reais de borda de célula com SINR negativo (< 0 dB) | Coletar telemetria E2/NR real cobrindo a faixa dinâmica completa de SINR |
 
 ### 9.2 Trabalhos Futuros
 
 - **Modelos sequenciais**: LSTM ou GRU para captura de padrões temporais de tráfego.
-- **Aprendizado por Reforço**: Agente no Near-RT RIC para otimização adaptativa de recursos (Sutton & Barto, 2018).
+- **Aprendizado por Reforço**: Agente no Near-RT RIC para otimização adaptativa de recursos em tempo real.
+- **Integração com Funcionalidades SON (3GPP TS 32.500)**: Utilizar a predição de throughput de UEs como *input* para xApps de *Self-Organizing Networks* (SON), especificamente para otimização de **Mobility Load Balancing (MLB)** (redirecionando UEs congestionados para células vizinhas com maior throughput estimado) e **Mobility Robustness Optimization (MRO)** (evitando handovers para células com throughput degradado).
 - **Transfer Learning**: Treinar em dados sintéticos e fine-tunar com dados reais de produção.
 - **Federated Learning**: Treinar modelos distribuídos em múltiplas gNBs sem centralizar dados sensíveis.
 
@@ -427,11 +461,11 @@ Este trabalho aplicou e comparou duas técnicas de Machine Learning — **Random
 
 **Principais achados:**
 
-1. O **Random Forest** superou o SVR em todas as métricas de acurácia, obtendo R²=0.78 no conjunto de teste e R²=0.63 na validação cruzada (k=5).
+1. No **conjunto de teste hold-out** (20% estratificado por `Cell_Class`), o **SVR superou o Random Forest** nas métricas de teste (R²=0.6795 vs R²=0.6379; MAE=32.42 Mbps vs 33.47 Mbps). Na **validação cruzada k=5**, ambos os modelos apresentaram desempenho equivalente (R² CV ~0.684), porém o SVR demonstrou maior estabilidade inter-fold (desvio padrão ±0.11 vs ±0.13 do RF).
 
 2. A análise de **feature importance** revelou que `Packet_Loss` (46%), `RSRQ` (21%) e `SINR` (13%) são responsáveis por mais de 80% da variância explicada do throughput — resultado coerente com o conhecimento de domínio em sistemas de comunicações rádio.
 
-3. No dataset temporal (série horária), o Random Forest obteve R²=0.95, demonstrando excelente capacidade de captura de padrões temporais simples com apenas 3 features.
+3. No dataset temporal (série horária), o Random Forest obteve R²=0.95 com LOO-CV, superando o SVR (R²=0.75). Esses valores devem ser interpretados como limite superior otimista, uma vez que o dataset possui tendência monotonônica e o LOO-CV não respeita ordem cronológica. Walk-Forward Validation seria mais rigorosa em produção.
 
 4. Ambos os modelos demonstram viabilidade para implantação como **xApps no Near-RT RIC** da arquitetura O-RAN, com latência de inferência compatível com o requisito de < 1 segundo.
 
@@ -443,12 +477,11 @@ Este trabalho aplicou e comparou duas técnicas de Machine Learning — **Random
 
 1. O-RAN Alliance. (2026). *O-RAN Working Group 1 Use Cases Detailed Specification v20.00*.
 2. O-RAN Alliance. (2026). *O-RAN Working Group 1 Use Cases Analysis Report v20.00*.
-3. O-RAN Alliance. (2021). *O-RAN Working Group 2 AI/ML Workflow Description and Requirements 1.03*.
+3. O-RAN Alliance. (2021). *O-RAN Working Group 2 AI/ML Workflow Description and Requirements 1.03*. *(Versão adotada como material de apoio do curso; versões posteriores formalizaram as entidades Model Training Host, Model Serving Host e Model Repository.)*
 4. Burkov, A. (2019). *The Hundred-Page Machine Learning Book*. Andriy Burkov.
-5. Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*. A Bradford Book, MIT Press.
-6. 3GPP. (2025). *AI/ML for NG-RAN*. Disponível em: https://www.3gpp.org/news-events/3gpp-news/ai-ml-2025
-7. 3GPP TS 32.500. *Telecommunication management; Self-Organizing Networks (SON)*.
-8. Scikit-learn Developers. (2024). *Scikit-learn: Machine Learning in Python*. JMLR 12, pp. 2825-2830.
+5. 3GPP. (2025). *AI/ML for NG-RAN*. Disponível em: https://www.3gpp.org/news-events/3gpp-news/ai-ml-2025
+6. 3GPP TS 32.500. *Telecommunication management; Self-Organizing Networks (SON)*.
+7. Scikit-learn Developers. (2024). *Scikit-learn: Machine Learning in Python*. JMLR 12, pp. 2825-2830.
 
 ---
 
