@@ -34,7 +34,7 @@ MLRan/
 │   └── relatorio_analise.md       # Documentação e análise
 └── Fontes/
     ├── kNN_Practice_100rows.csv   # Dataset principal (100 amostras)
-    └── traffic_prediction.csv    # Dataset temporal (16 amostras)
+    └── traffic_prediction.csv     # Dataset temporal (16 amostras)
 ```
 
 ## Instalação e Configuração
