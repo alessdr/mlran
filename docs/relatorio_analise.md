@@ -3,6 +3,7 @@
 **Disciplina:** Aplicações de Inteligência Artificial e Machine Learning em RIC  
 **Curso:** Pós-Graduação em OpenRAN  
 **Data:** Julho de 2026
+**Professor:** Julio Tesolin
 
 ---
 
