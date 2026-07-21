@@ -1,0 +1,801 @@
+Cell_ID,RSRP,RSRQ,SINR,PRB_Usage,Active_Users,Throughput,Packet_Loss,Latency,Interference_Class
+1001,-75,-11,18.3,47,25,110.1,0.59,16.1,Normal
+1002,-77,-11,25.1,32,11,98.4,0.19,15.2,Normal
+1003,-77,-10,26.6,64,36,109.8,0.47,17.7,Normal
+1004,-85,-10,26.4,51,27,104.0,0.77,12.0,Normal
+1005,-84,-8,19.2,52,48,113.8,0.03,13.5,Normal
+1006,-84,-8,18.9,48,50,145.7,0.69,14.9,Normal
+1007,-84,-11,25.9,48,15,167.0,0.69,12.6,Normal
+1008,-78,-9,20.0,52,23,150.3,0.56,16.2,Normal
+1009,-84,-7,25.6,64,56,112.0,0.37,11.2,Normal
+1010,-75,-7,20.6,50,59,159.8,0.18,8.4,Normal
+1011,-80,-8,21.2,43,46,168.9,0.25,15.9,Normal
+1012,-79,-8,19.7,38,25,157.0,0.43,17.0,Normal
+1013,-79,-7,22.8,44,18,135.9,0.07,8.6,Normal
+1014,-84,-10,25.5,57,48,95.7,0.31,20.0,Normal
+1015,-77,-9,29.7,30,53,154.9,0.55,14.4,Normal
+1016,-81,-9,19.3,57,20,130.8,0.76,18.5,Normal
+1017,-81,-7,27.1,62,16,168.3,0.24,15.7,Normal
+1018,-76,-10,19.8,40,44,175.8,0.74,19.0,Normal
+1019,-76,-9,23.9,37,33,169.1,0.67,11.7,Normal
+1020,-85,-10,28.5,35,15,155.9,0.65,19.7,Normal
+1021,-77,-10,19.5,60,45,104.9,0.42,15.3,Normal
+1022,-82,-7,27.1,42,55,118.1,0.8,15.8,Normal
+1023,-78,-7,23.4,45,24,95.8,0.02,14.6,Normal
+1024,-76,-10,18.1,70,13,110.6,0.72,18.3,Normal
+1025,-84,-7,20.9,61,23,138.5,0.58,18.6,Normal
+1026,-76,-8,20.9,60,36,107.1,0.08,13.2,Normal
+1027,-79,-8,23.6,33,53,148.8,0.52,8.7,Normal
+1028,-80,-11,21.0,42,44,130.4,0.34,11.3,Normal
+1029,-82,-11,23.3,65,16,94.6,0.8,18.0,Normal
+1030,-84,-10,20.0,61,40,109.2,0.32,8.7,Normal
+1031,-79,-11,29.8,46,60,160.7,0.23,16.4,Normal
+1032,-77,-8,19.9,48,23,177.2,0.46,14.5,Normal
+1033,-80,-11,18.6,60,42,172.7,0.42,8.7,Normal
+1034,-77,-11,28.2,34,48,96.1,0.69,12.8,Normal
+1035,-76,-10,24.9,32,49,97.4,0.53,14.8,Normal
+1036,-80,-9,20.5,50,25,113.9,0.1,15.7,Normal
+1037,-78,-9,29.1,34,10,131.2,0.8,20.0,Normal
+1038,-84,-7,20.6,46,18,174.0,0.7,18.6,Normal
+1039,-80,-9,19.9,64,55,117.2,0.79,17.7,Normal
+1040,-77,-11,26.0,65,29,173.9,0.08,18.5,Normal
+1041,-81,-11,28.7,65,19,114.5,0.48,16.6,Normal
+1042,-82,-9,24.1,46,13,98.3,0.34,11.3,Normal
+1043,-85,-9,27.3,70,26,104.5,0.35,16.5,Normal
+1044,-77,-11,19.3,39,44,93.2,0.3,14.6,Normal
+1045,-79,-10,18.5,53,60,177.5,0.03,12.3,Normal
+1046,-75,-10,26.0,52,59,140.4,0.7,19.7,Normal
+1047,-83,-10,28.4,41,36,92.2,0.59,12.0,Normal
+1048,-79,-10,21.2,36,34,168.5,0.69,10.7,Normal
+1049,-78,-9,21.7,44,24,92.1,0.15,11.9,Normal
+1050,-84,-9,22.2,62,35,151.2,0.67,12.0,Normal
+1051,-85,-11,28.5,46,21,142.3,0.79,8.5,Normal
+1052,-76,-8,22.1,50,37,144.6,0.41,12.6,Normal
+1053,-76,-10,21.1,57,10,136.8,0.65,16.2,Normal
+1054,-75,-10,22.4,34,52,172.9,0.5,16.0,Normal
+1055,-84,-9,24.1,56,30,126.2,0.24,9.5,Normal
+1056,-79,-8,26.1,41,49,141.2,0.32,18.0,Normal
+1057,-81,-9,20.5,67,48,148.9,0.37,13.3,Normal
+1058,-82,-7,23.7,40,52,97.6,0.41,15.6,Normal
+1059,-80,-11,27.8,45,53,117.9,0.65,9.8,Normal
+1060,-85,-10,29.8,69,59,96.6,0.33,15.6,Normal
+1061,-82,-8,23.9,45,19,149.0,0.0,17.0,Normal
+1062,-84,-8,20.6,63,39,94.5,0.2,18.2,Normal
+1063,-78,-10,27.6,63,45,143.6,0.76,18.7,Normal
+1064,-76,-7,23.1,65,38,170.7,0.59,13.7,Normal
+1065,-81,-10,28.1,47,59,160.0,0.39,10.9,Normal
+1066,-78,-11,26.6,45,27,120.2,0.71,9.0,Normal
+1067,-83,-10,22.6,39,55,109.3,0.33,12.0,Normal
+1068,-78,-8,18.7,56,34,171.4,0.47,16.3,Normal
+1069,-76,-8,23.7,52,29,157.8,0.68,19.4,Normal
+1070,-79,-7,27.0,64,48,170.8,0.39,11.3,Normal
+1071,-78,-11,22.7,55,56,104.9,0.37,9.5,Normal
+1072,-76,-7,18.3,55,47,140.8,0.02,15.7,Normal
+1073,-83,-8,20.2,46,34,119.5,0.36,12.1,Normal
+1074,-79,-9,27.0,56,26,165.1,0.38,17.0,Normal
+1075,-85,-9,20.7,34,59,176.2,0.03,8.4,Normal
+1076,-82,-10,28.1,69,19,111.5,0.38,9.4,Normal
+1077,-82,-8,26.4,53,20,144.5,0.77,16.6,Normal
+1078,-83,-9,19.3,31,29,141.8,0.73,12.5,Normal
+1079,-82,-11,25.1,70,25,99.2,0.62,18.2,Normal
+1080,-76,-11,27.6,66,60,93.7,0.43,15.9,Normal
+1081,-84,-7,25.8,30,36,164.0,0.08,19.5,Normal
+1082,-75,-8,26.5,57,21,156.0,0.77,11.2,Normal
+1083,-77,-8,23.6,67,27,119.0,0.2,19.2,Normal
+1084,-81,-8,20.9,59,46,144.9,0.3,8.3,Normal
+1085,-80,-10,23.9,52,26,120.6,0.7,16.4,Normal
+1086,-81,-7,18.1,42,15,111.7,0.33,14.7,Normal
+1087,-82,-8,25.8,61,38,161.4,0.07,10.7,Normal
+1088,-82,-9,26.0,53,40,139.8,0.28,20.0,Normal
+1089,-77,-9,22.2,59,27,117.6,0.18,16.7,Normal
+1090,-80,-11,26.9,41,22,109.5,0.39,16.7,Normal
+1091,-77,-7,21.4,36,22,116.7,0.29,11.6,Normal
+1092,-77,-10,21.3,33,45,116.3,0.76,15.7,Normal
+1093,-78,-11,28.5,66,28,132.2,0.35,10.2,Normal
+1094,-85,-9,29.3,60,17,164.0,0.32,8.9,Normal
+1095,-75,-11,19.8,66,29,97.7,0.2,14.7,Normal
+1096,-79,-7,25.2,69,24,159.8,0.3,18.9,Normal
+1097,-81,-7,29.9,49,46,145.9,0.49,16.9,Normal
+1098,-82,-10,21.2,35,20,111.6,0.44,9.9,Normal
+1099,-79,-8,26.3,60,28,92.9,0.23,11.4,Normal
+1100,-78,-11,26.2,46,60,161.2,0.47,17.6,Normal
+1101,-82,-8,19.4,44,51,103.4,0.21,9.7,Normal
+1102,-85,-10,27.5,68,57,164.2,0.74,13.3,Normal
+1103,-78,-9,26.4,47,42,138.6,0.35,15.2,Normal
+1104,-79,-9,25.2,31,15,110.6,0.54,18.3,Normal
+1105,-76,-11,30.0,47,46,93.6,0.61,13.6,Normal
+1106,-75,-8,29.0,41,47,129.2,0.65,19.6,Normal
+1107,-78,-9,22.9,50,52,99.4,0.13,12.9,Normal
+1108,-78,-9,26.0,55,58,139.5,0.36,11.8,Normal
+1109,-80,-11,29.6,55,42,164.2,0.0,18.4,Normal
+1110,-78,-8,18.7,63,33,146.0,0.4,13.3,Normal
+1111,-85,-10,21.2,38,28,129.4,0.56,9.5,Normal
+1112,-75,-7,27.6,40,29,139.6,0.44,9.1,Normal
+1113,-84,-8,29.4,39,41,173.9,0.23,16.5,Normal
+1114,-79,-8,29.8,45,39,139.6,0.31,19.1,Normal
+1115,-77,-10,28.4,47,59,161.1,0.33,19.2,Normal
+1116,-77,-9,27.8,48,56,116.9,0.47,20.0,Normal
+1117,-78,-10,23.4,60,32,119.9,0.61,12.5,Normal
+1118,-80,-10,29.8,45,46,124.5,0.68,12.9,Normal
+1119,-80,-8,26.5,54,34,179.0,0.63,15.8,Normal
+1120,-83,-8,29.6,38,42,176.9,0.27,9.2,Normal
+1121,-78,-11,24.3,59,10,155.0,0.33,15.9,Normal
+1122,-83,-11,23.6,46,31,146.1,0.32,9.0,Normal
+1123,-80,-7,22.6,50,50,154.7,0.61,18.5,Normal
+1124,-85,-7,18.8,70,53,172.9,0.8,17.0,Normal
+1125,-79,-11,27.1,36,38,105.0,0.24,8.3,Normal
+1126,-80,-11,21.5,53,37,103.1,0.42,14.8,Normal
+1127,-83,-10,20.1,69,34,145.8,0.19,19.0,Normal
+1128,-83,-10,23.5,46,39,113.0,0.01,17.7,Normal
+1129,-81,-7,19.9,58,32,178.9,0.24,19.5,Normal
+1130,-81,-8,28.1,42,34,166.8,0.09,12.6,Normal
+1131,-80,-7,21.6,48,11,178.0,0.53,11.3,Normal
+1132,-76,-11,28.9,61,28,159.8,0.18,17.6,Normal
+1133,-82,-10,25.5,38,50,98.7,0.5,8.5,Normal
+1134,-78,-11,25.0,38,15,171.9,0.26,13.0,Normal
+1135,-82,-10,27.4,53,43,135.2,0.22,10.0,Normal
+1136,-78,-9,27.0,51,17,132.1,0.06,17.0,Normal
+1137,-82,-8,29.6,65,33,98.1,0.32,11.2,Normal
+1138,-84,-8,22.4,46,47,124.3,0.51,12.5,Normal
+1139,-75,-10,23.7,69,45,119.5,0.49,15.8,Normal
+1140,-75,-8,28.9,49,51,126.7,0.11,19.4,Normal
+1141,-81,-8,19.4,45,44,102.2,0.36,16.0,Normal
+1142,-77,-8,25.0,39,36,148.9,0.67,15.4,Normal
+1143,-81,-11,26.3,43,38,130.0,0.19,12.4,Normal
+1144,-75,-9,24.5,52,13,125.8,0.15,9.5,Normal
+1145,-78,-11,26.0,70,48,177.4,0.04,12.0,Normal
+1146,-83,-7,20.5,65,23,142.8,0.65,10.8,Normal
+1147,-83,-7,18.0,39,18,138.6,0.64,9.3,Normal
+1148,-85,-10,18.2,45,47,119.1,0.14,8.6,Normal
+1149,-79,-7,19.4,34,40,130.3,0.29,15.1,Normal
+1150,-78,-7,20.7,69,12,155.5,0.73,15.9,Normal
+1151,-81,-8,25.7,31,13,179.9,0.68,13.1,Normal
+1152,-84,-8,26.5,58,14,170.9,0.26,9.8,Normal
+1153,-83,-9,25.5,67,45,154.1,0.3,15.2,Normal
+1154,-81,-8,24.1,57,16,161.4,0.09,15.9,Normal
+1155,-77,-10,23.2,44,36,120.5,0.36,13.0,Normal
+1156,-84,-9,23.1,46,33,175.8,0.55,13.7,Normal
+1157,-84,-11,19.1,36,57,156.5,0.65,14.7,Normal
+1158,-76,-7,24.7,37,36,121.8,0.53,17.0,Normal
+1159,-85,-9,25.2,52,16,142.0,0.17,15.9,Normal
+1160,-82,-11,22.2,65,33,100.3,0.22,10.7,Normal
+1161,-79,-7,29.7,69,49,150.7,0.45,15.3,Normal
+1162,-75,-9,18.3,47,54,158.6,0.74,12.2,Normal
+1163,-83,-10,24.8,55,14,102.8,0.51,8.4,Normal
+1164,-77,-10,22.5,59,31,104.2,0.25,11.9,Normal
+1165,-76,-7,19.0,33,19,104.2,0.49,16.1,Normal
+1166,-81,-8,25.9,61,48,129.8,0.22,17.1,Normal
+1167,-84,-9,23.2,48,53,151.1,0.39,16.0,Normal
+1168,-85,-10,22.7,68,13,90.7,0.24,10.5,Normal
+1169,-83,-9,21.5,37,10,134.8,0.34,9.6,Normal
+1170,-77,-10,24.0,52,14,125.7,0.59,13.2,Normal
+1171,-78,-11,28.3,66,37,141.6,0.57,13.0,Normal
+1172,-84,-8,18.3,50,20,162.1,0.49,18.0,Normal
+1173,-80,-11,23.2,36,25,129.2,0.32,8.9,Normal
+1174,-81,-9,20.7,40,14,135.9,0.09,14.1,Normal
+1175,-80,-9,26.7,39,25,99.3,0.2,10.1,Normal
+1176,-83,-11,20.1,70,41,131.8,0.45,15.0,Normal
+1177,-75,-7,25.7,69,30,167.8,0.5,9.8,Normal
+1178,-84,-8,23.3,49,60,114.7,0.04,14.1,Normal
+1179,-81,-8,23.4,33,33,164.9,0.06,18.4,Normal
+1180,-84,-7,25.1,54,39,142.2,0.76,16.9,Normal
+1181,-85,-8,28.9,66,51,106.9,0.48,14.0,Normal
+1182,-85,-8,19.2,51,55,97.6,0.52,8.5,Normal
+1183,-78,-8,24.3,69,20,122.8,0.73,12.6,Normal
+1184,-80,-7,18.6,70,51,120.1,0.26,14.7,Normal
+1185,-79,-9,21.0,68,19,120.0,0.47,9.7,Normal
+1186,-80,-9,29.6,55,18,143.6,0.75,11.7,Normal
+1187,-79,-9,27.8,63,15,148.1,0.34,12.3,Normal
+1188,-80,-9,20.2,43,31,175.3,0.39,10.7,Normal
+1189,-83,-10,18.9,36,42,159.4,0.67,18.6,Normal
+1190,-85,-9,28.5,69,18,143.8,0.12,10.2,Normal
+1191,-76,-10,26.7,32,36,122.8,0.58,19.6,Normal
+1192,-76,-9,27.0,58,24,138.1,0.25,17.7,Normal
+1193,-78,-10,22.4,66,38,131.6,0.23,12.6,Normal
+1194,-77,-8,29.6,42,48,102.5,0.2,15.7,Normal
+1195,-80,-7,29.2,63,17,115.7,0.61,11.3,Normal
+1196,-77,-10,28.0,35,24,163.5,0.71,19.2,Normal
+1197,-79,-11,22.8,53,25,124.8,0.07,10.7,Normal
+1198,-80,-11,28.1,51,60,103.1,0.03,19.0,Normal
+1199,-78,-10,27.1,60,38,145.4,0.72,8.2,Normal
+1200,-82,-10,24.6,68,43,128.1,0.62,10.9,Normal
+1201,-94,-16,7.9,95,70,83.6,1.69,36.7,Co-channel Interference
+1202,-88,-12,10.3,95,52,80.3,3.66,25.8,Co-channel Interference
+1203,-95,-12,8.8,91,46,53.1,3.5,30.5,Co-channel Interference
+1204,-90,-16,13.6,89,52,95.0,3.02,20.4,Co-channel Interference
+1205,-82,-13,6.3,79,43,57.8,1.55,35.8,Co-channel Interference
+1206,-90,-15,11.9,95,26,94.0,3.71,26.7,Co-channel Interference
+1207,-95,-14,10.4,66,73,94.5,2.89,33.9,Co-channel Interference
+1208,-85,-15,12.5,59,65,94.3,2.87,25.9,Co-channel Interference
+1209,-95,-15,13.1,75,79,61.7,2.69,36.3,Co-channel Interference
+1210,-88,-14,6.3,67,38,65.0,3.84,37.3,Co-channel Interference
+1211,-90,-14,7.0,78,47,102.3,3.73,37.9,Co-channel Interference
+1212,-89,-14,13.8,86,64,74.8,4.27,30.4,Co-channel Interference
+1213,-83,-16,11.8,60,47,82.2,3.97,30.9,Co-channel Interference
+1214,-90,-16,6.6,73,39,71.2,3.65,23.3,Co-channel Interference
+1215,-88,-14,9.6,77,59,109.9,2.32,39.6,Co-channel Interference
+1216,-95,-16,11.4,80,43,75.9,3.75,23.2,Co-channel Interference
+1217,-95,-15,12.8,83,22,48.8,2.21,32.9,Co-channel Interference
+1218,-90,-13,13.6,57,58,50.7,2.85,27.4,Co-channel Interference
+1219,-88,-16,10.6,88,43,67.9,3.45,25.0,Co-channel Interference
+1220,-94,-16,11.9,86,53,67.1,3.19,25.2,Co-channel Interference
+1221,-91,-13,7.7,94,38,88.6,4.5,24.0,Co-channel Interference
+1222,-93,-16,9.6,83,25,96.7,4.4,39.7,Co-channel Interference
+1223,-85,-14,11.7,90,54,60.3,2.4,23.2,Co-channel Interference
+1224,-84,-15,12.3,87,34,48.5,2.1,22.8,Co-channel Interference
+1225,-83,-13,6.2,90,56,65.8,3.91,31.0,Co-channel Interference
+1226,-86,-16,6.5,80,65,90.3,3.08,35.4,Co-channel Interference
+1227,-82,-12,6.6,75,61,45.2,2.9,30.3,Co-channel Interference
+1228,-93,-12,11.1,66,69,107.6,2.8,38.2,Co-channel Interference
+1229,-95,-16,10.1,74,30,51.3,4.3,24.5,Co-channel Interference
+1230,-87,-14,12.8,71,32,84.5,3.15,22.5,Co-channel Interference
+1231,-91,-12,10.3,87,61,51.8,4.32,23.1,Co-channel Interference
+1232,-85,-12,11.8,93,41,99.0,3.19,36.5,Co-channel Interference
+1233,-95,-16,6.4,91,36,85.6,3.8,28.3,Co-channel Interference
+1234,-85,-16,10.0,95,54,60.3,4.37,29.7,Co-channel Interference
+1235,-83,-13,8.4,59,64,44.2,2.82,29.7,Co-channel Interference
+1236,-92,-14,10.9,75,75,90.3,3.7,37.2,Co-channel Interference
+1237,-89,-15,12.1,87,55,47.4,2.23,22.5,Co-channel Interference
+1238,-88,-15,7.1,58,38,106.2,4.09,28.4,Co-channel Interference
+1239,-82,-15,12.5,91,66,61.9,3.79,30.0,Co-channel Interference
+1240,-87,-13,10.0,74,51,41.6,4.34,30.1,Co-channel Interference
+1241,-92,-15,10.7,58,23,59.7,3.29,36.9,Co-channel Interference
+1242,-85,-13,8.3,55,74,47.5,1.9,25.3,Co-channel Interference
+1243,-90,-13,8.9,80,23,79.9,2.08,31.1,Co-channel Interference
+1244,-94,-13,10.0,90,37,97.8,3.37,32.2,Co-channel Interference
+1245,-93,-16,9.2,76,55,105.7,3.76,24.0,Co-channel Interference
+1246,-87,-13,10.0,57,22,49.6,2.5,29.5,Co-channel Interference
+1247,-88,-15,10.9,87,28,63.0,3.34,23.3,Co-channel Interference
+1248,-86,-14,10.7,87,73,75.7,2.97,31.3,Co-channel Interference
+1249,-88,-16,8.9,62,46,80.9,3.89,34.5,Co-channel Interference
+1250,-84,-16,10.8,71,61,94.8,3.83,31.6,Co-channel Interference
+1251,-84,-16,10.7,65,53,84.0,3.36,36.8,Co-channel Interference
+1252,-93,-15,6.3,62,32,41.3,2.44,23.0,Co-channel Interference
+1253,-84,-15,9.3,94,78,73.0,4.05,34.5,Co-channel Interference
+1254,-84,-15,10.1,90,40,109.9,2.94,27.5,Co-channel Interference
+1255,-93,-13,13.3,76,54,64.8,3.82,34.4,Co-channel Interference
+1256,-85,-14,10.9,67,35,59.5,2.4,38.8,Co-channel Interference
+1257,-91,-14,11.6,86,40,73.6,3.18,38.7,Co-channel Interference
+1258,-84,-14,8.3,91,63,78.0,4.19,27.9,Co-channel Interference
+1259,-90,-15,8.3,73,65,45.5,4.27,33.1,Co-channel Interference
+1260,-84,-13,7.7,89,37,105.3,3.59,22.7,Co-channel Interference
+1261,-86,-12,7.9,58,62,103.4,2.18,24.7,Co-channel Interference
+1262,-94,-13,8.6,85,26,87.7,1.91,39.3,Co-channel Interference
+1263,-93,-13,11.2,85,50,85.5,3.77,25.7,Co-channel Interference
+1264,-91,-16,13.3,60,61,80.2,3.11,34.5,Co-channel Interference
+1265,-95,-15,9.3,66,79,104.4,4.49,27.9,Co-channel Interference
+1266,-88,-15,13.5,73,76,42.6,2.4,32.1,Co-channel Interference
+1267,-90,-14,9.6,89,53,74.6,4.32,37.0,Co-channel Interference
+1268,-88,-14,7.5,62,41,51.4,2.88,25.1,Co-channel Interference
+1269,-93,-16,11.9,73,56,87.2,2.08,32.2,Co-channel Interference
+1270,-85,-13,12.6,87,40,46.1,3.51,23.7,Co-channel Interference
+1271,-93,-13,8.6,70,20,58.3,2.21,35.1,Co-channel Interference
+1272,-90,-14,10.7,91,20,58.3,2.58,24.7,Co-channel Interference
+1273,-85,-16,9.7,65,45,88.0,4.27,37.8,Co-channel Interference
+1274,-83,-14,11.5,95,78,105.8,2.6,24.4,Co-channel Interference
+1275,-93,-13,7.2,93,43,69.1,3.15,29.4,Co-channel Interference
+1276,-87,-15,12.1,93,75,95.1,3.08,30.6,Co-channel Interference
+1277,-90,-16,13.3,62,23,98.0,4.21,24.0,Co-channel Interference
+1278,-87,-15,7.3,88,48,48.1,2.12,31.7,Co-channel Interference
+1279,-94,-12,9.6,58,49,49.2,2.75,31.3,Co-channel Interference
+1280,-87,-13,11.4,74,66,41.5,2.26,20.1,Co-channel Interference
+1281,-92,-12,6.6,82,42,89.0,3.12,21.2,Co-channel Interference
+1282,-94,-13,6.3,81,31,93.8,3.8,39.6,Co-channel Interference
+1283,-85,-13,9.0,79,48,100.9,4.22,27.5,Co-channel Interference
+1284,-85,-12,7.1,77,27,52.5,3.11,30.6,Co-channel Interference
+1285,-84,-15,12.7,56,39,72.4,3.66,28.5,Co-channel Interference
+1286,-89,-15,8.0,77,29,59.3,4.31,34.5,Co-channel Interference
+1287,-94,-16,12.5,81,59,93.6,4.15,20.3,Co-channel Interference
+1288,-92,-16,6.8,57,48,81.8,3.61,21.0,Co-channel Interference
+1289,-84,-16,9.2,69,54,55.2,4.09,21.1,Co-channel Interference
+1290,-87,-14,7.9,91,40,80.4,3.82,36.4,Co-channel Interference
+1291,-92,-14,13.0,88,34,68.9,2.33,31.1,Co-channel Interference
+1292,-86,-15,11.0,82,55,74.7,4.42,38.8,Co-channel Interference
+1293,-85,-13,12.3,75,64,69.1,1.95,27.5,Co-channel Interference
+1294,-83,-12,9.8,69,39,100.0,1.93,29.3,Co-channel Interference
+1295,-95,-12,9.3,81,55,77.1,2.67,25.1,Co-channel Interference
+1296,-90,-16,13.4,78,25,77.5,3.99,21.0,Co-channel Interference
+1297,-89,-12,10.8,59,32,96.3,3.26,33.4,Co-channel Interference
+1298,-92,-13,7.7,76,39,107.0,1.55,38.7,Co-channel Interference
+1299,-84,-16,12.0,85,78,57.0,3.31,24.1,Co-channel Interference
+1300,-92,-12,8.6,73,44,72.6,3.45,26.2,Co-channel Interference
+1301,-90,-12,13.1,84,26,96.2,3.67,35.2,Co-channel Interference
+1302,-90,-15,9.0,81,22,79.4,2.16,22.9,Co-channel Interference
+1303,-91,-12,13.5,92,66,69.2,1.96,26.6,Co-channel Interference
+1304,-89,-12,12.7,86,55,85.8,3.55,25.1,Co-channel Interference
+1305,-82,-13,13.7,86,49,51.8,3.88,23.4,Co-channel Interference
+1306,-84,-12,9.9,89,61,107.0,3.07,36.8,Co-channel Interference
+1307,-94,-16,12.1,81,28,99.0,2.19,34.1,Co-channel Interference
+1308,-95,-15,10.0,78,23,83.2,3.5,32.3,Co-channel Interference
+1309,-88,-13,6.1,89,55,68.8,1.55,34.4,Co-channel Interference
+1310,-87,-14,6.1,82,71,105.8,2.04,38.4,Co-channel Interference
+1311,-87,-15,7.9,94,53,57.7,2.56,35.9,Co-channel Interference
+1312,-94,-14,13.7,84,56,57.0,3.59,26.0,Co-channel Interference
+1313,-82,-16,11.2,57,25,68.4,2.63,29.5,Co-channel Interference
+1314,-85,-16,11.6,60,51,99.2,3.43,26.6,Co-channel Interference
+1315,-82,-16,13.2,57,34,54.8,4.1,37.8,Co-channel Interference
+1316,-88,-14,6.4,59,63,104.8,4.2,31.3,Co-channel Interference
+1317,-95,-15,13.4,75,21,107.3,3.26,35.0,Co-channel Interference
+1318,-84,-13,13.4,74,30,79.5,3.2,37.0,Co-channel Interference
+1319,-85,-12,8.7,63,70,109.2,3.67,30.0,Co-channel Interference
+1320,-90,-16,6.8,69,73,45.3,3.32,32.3,Co-channel Interference
+1321,-86,-13,13.8,75,21,84.4,3.85,29.0,Co-channel Interference
+1322,-92,-14,10.4,79,47,53.0,3.26,27.6,Co-channel Interference
+1323,-83,-12,8.4,70,65,45.1,2.3,27.6,Co-channel Interference
+1324,-83,-15,11.9,75,43,47.5,1.52,26.2,Co-channel Interference
+1325,-90,-14,6.8,60,31,70.2,3.17,30.2,Co-channel Interference
+1326,-94,-16,6.7,90,25,81.8,3.85,37.3,Co-channel Interference
+1327,-95,-14,9.3,60,66,103.1,4.22,39.6,Co-channel Interference
+1328,-86,-12,7.4,79,30,49.7,2.4,29.9,Co-channel Interference
+1329,-94,-15,9.5,81,39,73.9,1.73,25.0,Co-channel Interference
+1330,-92,-13,10.8,67,49,47.5,2.41,39.0,Co-channel Interference
+1331,-90,-12,9.0,76,48,63.4,3.95,37.2,Co-channel Interference
+1332,-86,-15,8.4,93,80,88.7,2.94,23.6,Co-channel Interference
+1333,-89,-14,8.3,95,51,107.7,3.85,26.5,Co-channel Interference
+1334,-91,-13,8.9,91,32,81.5,3.14,33.6,Co-channel Interference
+1335,-87,-16,13.6,84,80,89.6,2.82,25.8,Co-channel Interference
+1336,-84,-16,12.6,81,63,75.0,3.4,24.8,Co-channel Interference
+1337,-85,-15,11.7,79,24,71.4,3.29,31.6,Co-channel Interference
+1338,-87,-12,13.4,81,54,42.6,4.41,34.0,Co-channel Interference
+1339,-83,-12,10.8,60,26,93.8,3.47,27.1,Co-channel Interference
+1340,-85,-12,6.4,80,68,63.2,3.89,22.1,Co-channel Interference
+1341,-94,-14,7.8,88,55,80.6,3.23,28.9,Co-channel Interference
+1342,-89,-13,12.2,92,64,75.0,2.53,20.5,Co-channel Interference
+1343,-94,-14,9.3,60,27,98.2,3.69,27.0,Co-channel Interference
+1344,-90,-13,12.3,88,50,64.4,1.79,34.4,Co-channel Interference
+1345,-88,-14,6.5,57,71,89.8,1.57,26.9,Co-channel Interference
+1346,-94,-15,13.4,70,53,52.2,1.98,31.2,Co-channel Interference
+1347,-88,-15,12.4,95,31,53.0,3.47,27.9,Co-channel Interference
+1348,-84,-12,13.1,83,57,70.1,1.51,24.3,Co-channel Interference
+1349,-91,-16,10.6,89,31,65.6,2.09,22.3,Co-channel Interference
+1350,-85,-13,10.2,95,40,81.8,3.33,31.7,Co-channel Interference
+1351,-90,-14,12.8,94,31,97.0,3.62,25.9,Co-channel Interference
+1352,-86,-12,6.7,63,40,48.3,2.42,23.7,Co-channel Interference
+1353,-84,-15,10.1,81,58,49.7,2.65,23.7,Co-channel Interference
+1354,-85,-12,11.5,66,55,51.7,2.37,23.7,Co-channel Interference
+1355,-82,-13,11.0,77,80,40.7,1.91,36.3,Co-channel Interference
+1356,-87,-12,11.2,81,63,74.4,3.63,28.9,Co-channel Interference
+1357,-93,-16,10.5,69,38,42.3,2.17,25.8,Co-channel Interference
+1358,-83,-13,10.5,86,55,75.8,3.22,25.4,Co-channel Interference
+1359,-87,-14,10.3,57,68,90.3,3.14,39.8,Co-channel Interference
+1360,-94,-15,8.4,57,48,58.4,4.09,21.7,Co-channel Interference
+1361,-82,-16,12.2,70,33,96.7,3.26,27.0,Co-channel Interference
+1362,-84,-12,11.1,65,59,49.7,2.12,24.1,Co-channel Interference
+1363,-95,-12,8.8,72,58,77.7,2.47,34.1,Co-channel Interference
+1364,-91,-12,8.1,87,77,87.6,1.79,39.3,Co-channel Interference
+1365,-83,-13,13.4,72,75,85.9,3.6,22.7,Co-channel Interference
+1366,-93,-14,12.6,80,51,50.0,3.4,32.6,Co-channel Interference
+1367,-89,-13,6.6,60,45,76.1,2.33,38.7,Co-channel Interference
+1368,-90,-13,13.6,75,57,40.2,3.82,34.7,Co-channel Interference
+1369,-84,-13,11.1,77,74,44.4,3.1,24.4,Co-channel Interference
+1370,-89,-15,10.0,75,73,59.9,3.14,22.6,Co-channel Interference
+1371,-82,-13,12.3,58,22,47.0,3.85,29.2,Co-channel Interference
+1372,-94,-15,9.5,55,47,54.2,3.57,22.6,Co-channel Interference
+1373,-85,-14,7.3,72,25,85.8,2.25,27.4,Co-channel Interference
+1374,-85,-15,6.4,95,39,90.8,3.77,28.6,Co-channel Interference
+1375,-94,-16,6.0,85,24,49.3,2.18,33.6,Co-channel Interference
+1376,-95,-16,11.6,62,75,69.6,1.9,21.4,Co-channel Interference
+1377,-89,-16,11.8,61,26,61.9,4.14,22.7,Co-channel Interference
+1378,-83,-15,11.1,64,24,77.1,1.53,33.0,Co-channel Interference
+1379,-88,-14,11.8,95,67,50.6,2.74,33.7,Co-channel Interference
+1380,-82,-15,6.7,61,28,92.7,3.27,27.7,Co-channel Interference
+1381,-89,-14,12.3,70,37,85.1,2.24,32.0,Co-channel Interference
+1382,-84,-12,8.3,56,74,99.3,4.13,24.1,Co-channel Interference
+1383,-86,-12,7.5,80,38,85.2,3.85,35.9,Co-channel Interference
+1384,-92,-13,9.1,70,51,84.7,1.71,37.8,Co-channel Interference
+1385,-95,-14,13.5,63,44,100.3,3.21,27.3,Co-channel Interference
+1386,-85,-15,12.1,59,21,81.1,1.54,24.3,Co-channel Interference
+1387,-95,-13,10.1,95,65,75.1,2.75,34.0,Co-channel Interference
+1388,-94,-12,10.3,64,37,45.9,1.74,38.4,Co-channel Interference
+1389,-83,-15,10.3,80,57,84.4,4.0,33.6,Co-channel Interference
+1390,-94,-14,11.6,70,23,57.1,4.27,22.3,Co-channel Interference
+1391,-86,-12,6.4,66,27,40.9,1.91,20.2,Co-channel Interference
+1392,-88,-14,10.2,71,30,66.0,3.75,37.5,Co-channel Interference
+1393,-84,-16,12.2,56,41,96.5,2.32,21.3,Co-channel Interference
+1394,-84,-12,11.0,86,49,75.8,1.67,37.2,Co-channel Interference
+1395,-93,-14,7.3,61,77,80.2,3.67,24.6,Co-channel Interference
+1396,-87,-16,6.4,55,35,43.2,2.59,38.4,Co-channel Interference
+1397,-93,-16,10.4,81,34,62.5,2.75,34.4,Co-channel Interference
+1398,-91,-16,10.6,62,52,87.1,1.66,24.5,Co-channel Interference
+1399,-87,-16,13.6,59,76,72.6,2.35,36.9,Co-channel Interference
+1400,-90,-16,10.4,55,43,54.0,3.19,26.1,Co-channel Interference
+1401,-83,-17,6.8,77,46,99.9,4.72,39.6,Adjacent Channel Interference
+1402,-84,-17,4.9,66,16,50.1,3.21,41.8,Adjacent Channel Interference
+1403,-92,-16,4.0,82,39,90.2,4.55,27.1,Adjacent Channel Interference
+1404,-84,-17,6.5,43,24,81.3,2.33,43.4,Adjacent Channel Interference
+1405,-84,-15,8.2,63,44,98.3,2.3,26.9,Adjacent Channel Interference
+1406,-90,-13,8.9,44,52,71.9,3.52,44.3,Adjacent Channel Interference
+1407,-89,-16,5.6,60,66,60.5,4.91,31.5,Adjacent Channel Interference
+1408,-85,-16,5.4,52,23,85.7,4.05,28.1,Adjacent Channel Interference
+1409,-90,-15,6.8,66,22,69.8,5.38,29.2,Adjacent Channel Interference
+1410,-88,-15,5.6,47,20,45.2,4.4,41.5,Adjacent Channel Interference
+1411,-81,-14,4.2,60,24,40.9,2.87,32.1,Adjacent Channel Interference
+1412,-84,-18,8.1,56,67,99.4,2.11,33.1,Adjacent Channel Interference
+1413,-85,-14,8.5,55,21,65.0,4.81,27.8,Adjacent Channel Interference
+1414,-92,-18,9.0,54,23,47.9,3.4,38.7,Adjacent Channel Interference
+1415,-82,-18,7.5,56,67,39.9,5.49,29.0,Adjacent Channel Interference
+1416,-82,-15,8.9,45,69,88.9,3.16,25.9,Adjacent Channel Interference
+1417,-85,-18,5.0,76,42,88.4,3.38,25.6,Adjacent Channel Interference
+1418,-82,-15,5.0,53,26,52.9,3.56,28.0,Adjacent Channel Interference
+1419,-83,-14,7.7,81,33,67.4,5.09,34.6,Adjacent Channel Interference
+1420,-91,-16,6.3,66,27,76.8,4.79,30.0,Adjacent Channel Interference
+1421,-80,-14,8.8,64,65,81.4,3.68,40.6,Adjacent Channel Interference
+1422,-87,-14,7.0,64,32,46.7,3.12,29.4,Adjacent Channel Interference
+1423,-80,-16,4.4,70,48,58.2,4.04,29.7,Adjacent Channel Interference
+1424,-90,-18,5.5,55,32,69.7,4.77,39.7,Adjacent Channel Interference
+1425,-80,-17,7.5,64,37,95.8,5.47,28.5,Adjacent Channel Interference
+1426,-89,-14,5.9,84,37,94.4,2.1,39.0,Adjacent Channel Interference
+1427,-83,-14,4.9,52,68,99.2,5.09,34.8,Adjacent Channel Interference
+1428,-88,-17,6.9,45,18,50.1,2.77,35.5,Adjacent Channel Interference
+1429,-92,-16,9.5,52,66,43.5,4.51,43.4,Adjacent Channel Interference
+1430,-87,-18,4.1,77,60,94.6,4.71,41.9,Adjacent Channel Interference
+1431,-87,-18,6.2,82,40,73.1,3.18,31.5,Adjacent Channel Interference
+1432,-90,-13,9.7,80,46,77.2,2.61,44.4,Adjacent Channel Interference
+1433,-81,-14,8.7,54,57,73.3,2.61,31.1,Adjacent Channel Interference
+1434,-81,-16,4.8,40,59,96.7,3.37,44.9,Adjacent Channel Interference
+1435,-83,-18,5.1,60,66,97.9,2.77,36.3,Adjacent Channel Interference
+1436,-85,-17,6.0,44,30,57.5,3.12,37.7,Adjacent Channel Interference
+1437,-91,-13,8.0,61,43,35.7,2.73,38.9,Adjacent Channel Interference
+1438,-87,-16,8.7,40,18,60.1,4.56,44.4,Adjacent Channel Interference
+1439,-86,-15,9.3,62,49,59.4,4.9,40.8,Adjacent Channel Interference
+1440,-83,-13,8.5,54,25,64.3,4.8,25.7,Adjacent Channel Interference
+1441,-92,-16,5.6,46,19,57.2,5.11,28.2,Adjacent Channel Interference
+1442,-91,-14,9.7,45,36,73.6,4.15,34.7,Adjacent Channel Interference
+1443,-92,-15,9.7,50,53,92.8,2.55,27.0,Adjacent Channel Interference
+1444,-89,-17,6.5,75,61,95.2,3.89,38.2,Adjacent Channel Interference
+1445,-88,-17,4.6,65,51,70.7,3.72,26.1,Adjacent Channel Interference
+1446,-92,-15,4.5,82,55,74.0,2.7,25.5,Adjacent Channel Interference
+1447,-90,-13,5.8,45,45,89.8,3.08,32.9,Adjacent Channel Interference
+1448,-85,-13,5.6,81,49,60.2,3.3,32.6,Adjacent Channel Interference
+1449,-90,-15,4.3,68,44,52.1,4.93,36.3,Adjacent Channel Interference
+1450,-90,-13,8.0,45,57,57.3,3.9,44.4,Adjacent Channel Interference
+1451,-83,-17,7.3,64,67,69.0,5.38,38.7,Adjacent Channel Interference
+1452,-85,-14,9.3,70,34,40.1,5.16,39.3,Adjacent Channel Interference
+1453,-84,-14,9.4,76,58,98.9,2.52,44.0,Adjacent Channel Interference
+1454,-85,-17,9.7,50,28,87.5,2.44,33.5,Adjacent Channel Interference
+1455,-82,-15,5.2,80,24,89.2,2.9,43.2,Adjacent Channel Interference
+1456,-80,-18,4.5,75,40,70.9,5.0,35.4,Adjacent Channel Interference
+1457,-92,-13,7.7,73,65,62.3,3.45,28.0,Adjacent Channel Interference
+1458,-83,-14,8.6,46,21,71.6,2.35,30.7,Adjacent Channel Interference
+1459,-84,-16,9.3,56,39,77.6,4.0,34.5,Adjacent Channel Interference
+1460,-90,-16,6.4,79,53,79.3,3.41,32.9,Adjacent Channel Interference
+1461,-87,-13,5.4,70,32,93.3,2.07,41.3,Adjacent Channel Interference
+1462,-88,-16,5.7,71,69,80.3,2.34,42.4,Adjacent Channel Interference
+1463,-90,-16,9.8,68,64,88.7,2.94,33.3,Adjacent Channel Interference
+1464,-82,-18,5.1,53,67,61.5,3.7,35.3,Adjacent Channel Interference
+1465,-87,-18,7.1,50,19,55.2,3.77,27.7,Adjacent Channel Interference
+1466,-84,-14,4.2,52,68,48.0,2.2,25.7,Adjacent Channel Interference
+1467,-92,-16,8.2,57,38,88.5,3.77,37.7,Adjacent Channel Interference
+1468,-91,-13,4.2,63,46,73.6,2.62,42.4,Adjacent Channel Interference
+1469,-83,-14,6.1,50,68,93.1,4.62,38.8,Adjacent Channel Interference
+1470,-88,-18,6.3,50,69,72.2,5.38,42.1,Adjacent Channel Interference
+1471,-82,-17,8.1,57,56,61.6,2.07,40.6,Adjacent Channel Interference
+1472,-80,-13,4.1,48,56,46.3,4.8,29.5,Adjacent Channel Interference
+1473,-83,-16,8.3,85,56,52.9,5.13,42.0,Adjacent Channel Interference
+1474,-85,-16,5.3,59,58,68.8,4.18,36.7,Adjacent Channel Interference
+1475,-92,-14,10.0,63,50,77.1,4.13,31.0,Adjacent Channel Interference
+1476,-91,-15,4.4,57,55,56.1,2.97,38.1,Adjacent Channel Interference
+1477,-82,-16,5.1,73,63,50.6,2.2,42.1,Adjacent Channel Interference
+1478,-80,-14,6.4,60,58,44.1,2.09,34.9,Adjacent Channel Interference
+1479,-88,-16,9.4,65,39,82.9,4.04,44.9,Adjacent Channel Interference
+1480,-89,-16,8.4,54,58,69.8,4.75,43.1,Adjacent Channel Interference
+1481,-82,-16,7.0,50,68,77.7,3.95,30.9,Adjacent Channel Interference
+1482,-85,-17,8.4,75,63,94.3,5.31,43.0,Adjacent Channel Interference
+1483,-82,-18,5.3,54,62,91.6,3.47,42.7,Adjacent Channel Interference
+1484,-87,-16,7.5,69,69,42.7,2.19,37.7,Adjacent Channel Interference
+1485,-83,-14,4.4,52,47,42.8,4.38,35.6,Adjacent Channel Interference
+1486,-86,-18,9.2,49,23,99.5,3.2,44.7,Adjacent Channel Interference
+1487,-85,-17,5.9,85,26,85.6,3.71,37.6,Adjacent Channel Interference
+1488,-90,-16,7.8,40,43,52.8,4.66,28.4,Adjacent Channel Interference
+1489,-80,-17,6.9,45,23,74.9,4.22,33.1,Adjacent Channel Interference
+1490,-85,-15,4.0,74,27,82.5,5.33,42.8,Adjacent Channel Interference
+1491,-80,-14,5.1,83,15,75.7,2.87,38.9,Adjacent Channel Interference
+1492,-87,-16,4.8,64,47,73.3,2.58,41.5,Adjacent Channel Interference
+1493,-88,-16,6.7,73,53,69.1,3.52,38.7,Adjacent Channel Interference
+1494,-90,-16,10.0,71,37,83.8,2.58,43.1,Adjacent Channel Interference
+1495,-80,-15,4.1,54,61,99.0,2.74,25.4,Adjacent Channel Interference
+1496,-84,-17,4.7,85,56,86.5,3.31,37.8,Adjacent Channel Interference
+1497,-80,-14,7.7,78,18,78.0,4.29,25.4,Adjacent Channel Interference
+1498,-81,-18,6.5,64,22,70.6,3.66,28.1,Adjacent Channel Interference
+1499,-81,-13,7.8,59,41,78.0,4.32,30.4,Adjacent Channel Interference
+1500,-83,-13,4.8,46,47,81.7,2.41,27.3,Adjacent Channel Interference
+1501,-91,-15,5.2,52,64,52.1,3.83,29.0,Adjacent Channel Interference
+1502,-81,-15,5.8,42,50,67.3,2.73,43.7,Adjacent Channel Interference
+1503,-87,-17,4.0,82,20,93.9,4.92,38.4,Adjacent Channel Interference
+1504,-90,-18,8.7,44,61,82.0,5.17,37.9,Adjacent Channel Interference
+1505,-85,-16,5.6,43,21,87.9,5.06,42.0,Adjacent Channel Interference
+1506,-87,-13,5.9,47,21,90.3,5.12,25.2,Adjacent Channel Interference
+1507,-90,-13,7.9,61,37,93.1,5.34,30.4,Adjacent Channel Interference
+1508,-81,-18,6.2,61,26,42.4,3.4,34.1,Adjacent Channel Interference
+1509,-86,-13,9.1,66,56,92.6,2.58,27.7,Adjacent Channel Interference
+1510,-81,-18,9.9,50,21,62.0,4.07,41.0,Adjacent Channel Interference
+1511,-82,-15,5.1,64,64,58.3,2.1,38.7,Adjacent Channel Interference
+1512,-81,-17,6.9,71,22,92.7,3.54,26.3,Adjacent Channel Interference
+1513,-82,-16,4.1,83,48,84.9,4.02,36.3,Adjacent Channel Interference
+1514,-82,-16,7.1,84,59,75.2,3.51,39.5,Adjacent Channel Interference
+1515,-85,-16,8.0,81,39,44.7,4.89,42.8,Adjacent Channel Interference
+1516,-83,-18,4.1,50,47,90.2,4.98,42.4,Adjacent Channel Interference
+1517,-91,-15,5.9,61,32,38.3,2.78,37.9,Adjacent Channel Interference
+1518,-86,-17,4.5,68,66,72.2,2.31,35.0,Adjacent Channel Interference
+1519,-87,-18,9.9,81,16,41.7,3.44,36.1,Adjacent Channel Interference
+1520,-92,-18,8.8,79,55,54.8,3.78,29.1,Adjacent Channel Interference
+1521,-82,-15,9.7,63,67,38.5,2.78,34.1,Adjacent Channel Interference
+1522,-84,-14,7.6,85,57,58.6,3.58,26.9,Adjacent Channel Interference
+1523,-82,-17,4.0,62,68,76.2,4.8,36.0,Adjacent Channel Interference
+1524,-87,-13,4.6,50,46,44.1,4.51,39.4,Adjacent Channel Interference
+1525,-91,-16,7.7,52,22,95.5,3.38,34.1,Adjacent Channel Interference
+1526,-80,-17,8.3,46,63,61.9,5.24,41.7,Adjacent Channel Interference
+1527,-83,-18,8.6,68,44,77.8,5.35,27.7,Adjacent Channel Interference
+1528,-85,-18,7.2,43,50,95.8,4.94,34.7,Adjacent Channel Interference
+1529,-84,-17,8.2,51,61,88.0,2.36,38.2,Adjacent Channel Interference
+1530,-83,-16,7.0,64,41,98.7,5.21,40.2,Adjacent Channel Interference
+1531,-88,-15,9.8,58,43,87.3,2.48,37.1,Adjacent Channel Interference
+1532,-81,-14,5.8,84,50,90.9,4.49,43.7,Adjacent Channel Interference
+1533,-82,-17,5.2,79,60,53.9,3.21,38.4,Adjacent Channel Interference
+1534,-81,-13,9.9,51,47,70.3,4.23,39.2,Adjacent Channel Interference
+1535,-80,-16,7.4,77,51,96.3,4.49,38.5,Adjacent Channel Interference
+1536,-84,-16,9.3,67,66,35.8,2.37,32.6,Adjacent Channel Interference
+1537,-92,-13,4.3,57,63,86.1,5.44,38.7,Adjacent Channel Interference
+1538,-90,-18,8.1,58,28,84.0,2.11,41.3,Adjacent Channel Interference
+1539,-91,-14,9.2,75,70,49.6,4.26,32.8,Adjacent Channel Interference
+1540,-84,-13,5.7,82,18,95.2,3.36,44.1,Adjacent Channel Interference
+1541,-82,-16,9.8,43,15,83.3,2.71,42.4,Adjacent Channel Interference
+1542,-85,-17,9.5,85,60,77.1,4.64,35.9,Adjacent Channel Interference
+1543,-83,-17,8.7,52,33,64.2,5.44,26.5,Adjacent Channel Interference
+1544,-90,-13,7.1,64,17,62.9,3.95,27.6,Adjacent Channel Interference
+1545,-83,-16,4.0,69,60,95.9,2.14,43.6,Adjacent Channel Interference
+1546,-83,-18,8.6,80,54,89.8,3.05,40.8,Adjacent Channel Interference
+1547,-84,-16,4.4,85,35,69.2,5.35,35.4,Adjacent Channel Interference
+1548,-80,-14,5.0,74,49,61.2,3.22,42.7,Adjacent Channel Interference
+1549,-82,-16,6.0,58,28,96.8,4.16,34.5,Adjacent Channel Interference
+1550,-84,-13,4.1,82,37,64.0,5.17,37.3,Adjacent Channel Interference
+1551,-83,-17,9.8,83,35,59.8,4.79,27.3,Adjacent Channel Interference
+1552,-88,-14,8.3,41,48,88.4,3.31,41.1,Adjacent Channel Interference
+1553,-85,-15,4.3,81,27,55.8,2.29,26.9,Adjacent Channel Interference
+1554,-80,-14,7.2,80,19,48.7,4.2,29.3,Adjacent Channel Interference
+1555,-82,-15,9.0,53,49,88.9,5.08,39.8,Adjacent Channel Interference
+1556,-86,-13,8.9,44,62,79.6,2.08,39.3,Adjacent Channel Interference
+1557,-92,-18,4.4,51,65,51.4,2.25,41.4,Adjacent Channel Interference
+1558,-88,-15,6.3,80,40,63.1,2.06,38.5,Adjacent Channel Interference
+1559,-84,-18,7.8,79,19,84.1,4.05,39.0,Adjacent Channel Interference
+1560,-91,-16,9.6,46,33,86.1,3.05,26.7,Adjacent Channel Interference
+1561,-80,-15,6.3,82,16,65.8,3.87,27.7,Adjacent Channel Interference
+1562,-86,-14,5.8,80,24,54.4,5.1,44.3,Adjacent Channel Interference
+1563,-81,-13,6.2,40,50,91.9,2.49,25.8,Adjacent Channel Interference
+1564,-83,-14,6.4,75,20,54.8,4.62,43.1,Adjacent Channel Interference
+1565,-87,-17,6.5,81,69,68.3,2.56,29.4,Adjacent Channel Interference
+1566,-88,-17,4.7,82,66,71.9,2.19,40.0,Adjacent Channel Interference
+1567,-84,-15,7.9,44,33,78.7,2.88,28.9,Adjacent Channel Interference
+1568,-83,-15,9.7,62,23,78.6,2.82,30.7,Adjacent Channel Interference
+1569,-91,-17,5.9,68,36,75.1,3.07,36.7,Adjacent Channel Interference
+1570,-83,-14,6.2,60,42,46.0,3.1,40.7,Adjacent Channel Interference
+1571,-81,-13,7.8,57,68,58.4,4.38,31.6,Adjacent Channel Interference
+1572,-85,-15,6.7,59,46,70.9,2.62,37.1,Adjacent Channel Interference
+1573,-88,-17,9.3,52,31,82.7,4.19,39.5,Adjacent Channel Interference
+1574,-92,-14,7.8,77,52,61.3,4.07,43.1,Adjacent Channel Interference
+1575,-84,-16,7.3,74,45,77.5,2.52,32.8,Adjacent Channel Interference
+1576,-80,-14,8.4,58,23,65.2,3.79,32.9,Adjacent Channel Interference
+1577,-84,-18,8.0,79,58,45.8,3.8,33.9,Adjacent Channel Interference
+1578,-90,-14,9.7,82,70,97.9,4.58,34.7,Adjacent Channel Interference
+1579,-87,-18,5.3,71,29,39.1,3.29,25.9,Adjacent Channel Interference
+1580,-89,-14,9.4,63,39,65.5,3.59,25.9,Adjacent Channel Interference
+1581,-82,-16,4.6,73,55,88.9,4.92,30.3,Adjacent Channel Interference
+1582,-84,-14,5.0,81,39,58.7,4.29,41.7,Adjacent Channel Interference
+1583,-84,-16,6.3,54,48,61.4,4.86,31.9,Adjacent Channel Interference
+1584,-80,-15,9.3,40,47,92.3,3.54,29.6,Adjacent Channel Interference
+1585,-84,-13,5.7,49,26,45.2,4.11,41.3,Adjacent Channel Interference
+1586,-82,-17,6.5,61,61,42.4,4.36,34.6,Adjacent Channel Interference
+1587,-83,-17,7.9,66,16,50.8,2.45,36.8,Adjacent Channel Interference
+1588,-90,-13,7.1,76,24,38.6,2.9,28.6,Adjacent Channel Interference
+1589,-86,-14,9.8,80,16,92.1,4.55,41.4,Adjacent Channel Interference
+1590,-91,-17,6.7,70,70,66.3,2.77,33.2,Adjacent Channel Interference
+1591,-90,-14,8.9,51,54,77.9,2.93,39.5,Adjacent Channel Interference
+1592,-87,-15,7.6,44,29,59.6,2.46,25.3,Adjacent Channel Interference
+1593,-84,-14,8.1,49,53,41.3,3.67,37.3,Adjacent Channel Interference
+1594,-92,-14,7.0,47,20,66.3,2.46,37.1,Adjacent Channel Interference
+1595,-92,-13,7.9,73,41,59.1,2.15,35.6,Adjacent Channel Interference
+1596,-89,-15,8.7,64,37,73.3,4.59,40.2,Adjacent Channel Interference
+1597,-81,-14,4.6,48,31,66.0,2.81,42.2,Adjacent Channel Interference
+1598,-88,-14,9.3,66,31,47.3,4.48,40.8,Adjacent Channel Interference
+1599,-83,-14,4.7,40,39,77.5,4.41,31.3,Adjacent Channel Interference
+1600,-87,-18,4.9,81,52,51.5,4.99,33.5,Adjacent Channel Interference
+1601,-95,-16,1.9,63,30,65.3,5.36,54.6,External Noise
+1602,-93,-19,2.6,55,35,35.2,4.88,43.6,External Noise
+1603,-89,-17,5.2,74,60,59.6,6.87,46.2,External Noise
+1604,-89,-19,0.7,52,30,67.2,7.1,50.4,External Noise
+1605,-90,-15,0.4,44,45,20.3,3.91,38.6,External Noise
+1606,-91,-17,0.6,36,19,42.3,6.24,53.1,External Noise
+1607,-94,-16,4.6,38,50,77.8,3.76,54.3,External Noise
+1608,-98,-15,3.5,20,17,71.0,7.69,48.0,External Noise
+1609,-97,-20,5.5,52,38,61.9,6.27,51.9,External Noise
+1610,-95,-19,4.6,30,10,79.8,7.01,43.8,External Noise
+1611,-94,-17,4.1,53,5,64.2,3.81,37.3,External Noise
+1612,-96,-15,5.8,78,42,40.9,7.83,41.9,External Noise
+1613,-91,-19,3.2,45,41,20.3,4.29,47.7,External Noise
+1614,-92,-20,3.5,41,12,68.2,7.81,56.9,External Noise
+1615,-88,-16,1.8,48,29,53.8,6.96,53.9,External Noise
+1616,-88,-17,4.8,77,42,71.7,5.67,41.4,External Noise
+1617,-94,-15,5.5,34,48,62.1,7.1,45.3,External Noise
+1618,-95,-16,3.7,64,58,35.8,4.79,45.0,External Noise
+1619,-89,-18,0.5,79,16,48.6,5.09,57.4,External Noise
+1620,-96,-19,6.6,63,17,49.9,4.4,53.4,External Noise
+1621,-96,-19,1.6,73,20,70.2,5.1,54.5,External Noise
+1622,-99,-20,4.7,62,36,56.8,6.94,48.5,External Noise
+1623,-100,-17,2.6,40,36,73.9,7.46,49.4,External Noise
+1624,-96,-17,1.3,68,37,36.8,4.5,49.4,External Noise
+1625,-100,-16,5.6,50,39,22.0,5.06,56.5,External Noise
+1626,-88,-19,3.2,27,49,51.1,4.92,35.2,External Noise
+1627,-90,-19,2.7,26,25,41.7,7.38,39.7,External Noise
+1628,-96,-19,1.9,59,26,42.0,5.74,40.3,External Noise
+1629,-89,-18,2.6,45,22,47.0,6.07,59.5,External Noise
+1630,-90,-19,5.7,66,22,68.2,6.0,56.4,External Noise
+1631,-97,-19,5.6,67,14,48.4,3.54,45.5,External Noise
+1632,-98,-15,3.6,66,25,67.1,4.85,49.1,External Noise
+1633,-91,-20,2.8,64,15,23.6,7.16,46.9,External Noise
+1634,-90,-20,3.1,41,21,41.7,6.02,58.3,External Noise
+1635,-96,-18,0.1,27,27,72.0,7.83,40.0,External Noise
+1636,-91,-15,4.5,31,54,37.1,4.96,47.8,External Noise
+1637,-88,-15,3.1,25,29,56.8,5.59,58.9,External Noise
+1638,-98,-15,5.7,41,31,57.9,6.07,56.2,External Noise
+1639,-99,-20,1.1,34,25,39.0,4.81,41.7,External Noise
+1640,-90,-17,1.9,48,54,71.8,5.13,49.7,External Noise
+1641,-93,-17,1.2,74,6,27.5,4.56,41.3,External Noise
+1642,-89,-15,5.2,33,15,43.8,3.93,58.4,External Noise
+1643,-93,-16,0.4,69,30,51.4,7.98,37.6,External Noise
+1644,-91,-19,0.6,79,29,38.6,4.61,42.1,External Noise
+1645,-90,-19,0.9,73,15,21.7,6.49,56.5,External Noise
+1646,-95,-17,3.3,75,39,76.1,5.97,38.4,External Noise
+1647,-89,-16,1.2,58,34,57.9,6.36,49.1,External Noise
+1648,-92,-15,4.5,39,27,48.9,4.52,37.2,External Noise
+1649,-96,-18,2.9,29,24,20.6,5.85,54.0,External Noise
+1650,-98,-18,2.0,54,5,61.3,5.71,53.9,External Noise
+1651,-96,-20,5.4,71,23,55.8,7.09,48.7,External Noise
+1652,-97,-17,6.2,47,30,35.0,6.72,51.1,External Noise
+1653,-94,-19,1.8,47,45,34.4,6.94,57.7,External Noise
+1654,-88,-15,4.8,38,46,64.6,7.14,45.3,External Noise
+1655,-99,-19,1.0,27,45,47.3,5.54,52.5,External Noise
+1656,-93,-19,2.2,29,8,78.2,3.6,59.3,External Noise
+1657,-96,-18,0.9,48,51,20.5,3.91,35.4,External Noise
+1658,-97,-18,2.9,70,56,49.9,5.17,52.4,External Noise
+1659,-100,-18,0.6,68,14,23.4,6.99,36.8,External Noise
+1660,-93,-19,1.3,73,21,69.0,7.23,38.0,External Noise
+1661,-88,-15,1.7,69,33,34.8,7.98,40.0,External Noise
+1662,-89,-20,3.6,33,35,43.3,7.83,58.4,External Noise
+1663,-98,-15,5.1,67,40,51.3,4.64,51.0,External Noise
+1664,-97,-18,6.2,75,47,33.1,4.01,50.8,External Noise
+1665,-95,-20,1.2,37,42,27.2,7.05,35.2,External Noise
+1666,-100,-16,5.5,50,49,55.8,5.17,37.2,External Noise
+1667,-98,-17,0.6,59,26,75.9,7.99,50.6,External Noise
+1668,-100,-18,4.5,64,39,67.5,4.07,40.8,External Noise
+1669,-92,-15,5.3,71,33,64.0,3.6,44.4,External Noise
+1670,-89,-19,1.8,22,36,62.4,6.02,48.6,External Noise
+1671,-93,-19,4.0,54,27,39.4,5.61,56.7,External Noise
+1672,-91,-16,1.1,53,14,47.0,7.19,48.5,External Noise
+1673,-93,-20,5.4,52,29,64.0,7.47,50.5,External Noise
+1674,-95,-16,1.7,66,9,59.5,5.93,44.7,External Noise
+1675,-92,-15,3.5,55,14,56.8,4.95,51.0,External Noise
+1676,-99,-20,3.7,24,7,70.1,4.08,56.8,External Noise
+1677,-97,-20,3.4,26,7,54.3,7.26,51.4,External Noise
+1678,-92,-16,4.9,36,8,42.0,6.23,36.8,External Noise
+1679,-97,-15,3.4,76,58,24.8,7.1,36.5,External Noise
+1680,-92,-15,6.6,46,57,42.1,6.69,55.6,External Noise
+1681,-96,-16,0.3,24,58,38.2,7.75,59.0,External Noise
+1682,-99,-20,5.1,54,29,31.4,5.87,41.2,External Noise
+1683,-90,-19,3.9,55,31,64.8,6.95,49.4,External Noise
+1684,-90,-17,4.9,47,11,30.0,4.31,45.0,External Noise
+1685,-95,-15,1.1,58,33,76.0,7.56,48.8,External Noise
+1686,-95,-18,2.9,60,32,69.6,4.96,41.0,External Noise
+1687,-92,-19,2.6,55,52,35.2,7.83,46.2,External Noise
+1688,-94,-20,5.1,38,43,21.0,4.11,57.3,External Noise
+1689,-100,-18,6.9,33,59,38.9,6.97,58.6,External Noise
+1690,-96,-16,3.6,56,41,29.3,3.67,43.9,External Noise
+1691,-98,-18,2.6,57,20,34.0,7.15,37.3,External Noise
+1692,-94,-16,6.4,66,9,63.4,7.07,39.3,External Noise
+1693,-89,-15,4.0,78,11,55.7,4.85,53.3,External Noise
+1694,-91,-17,0.5,23,54,40.1,7.46,45.9,External Noise
+1695,-99,-19,5.2,74,43,75.7,6.35,50.8,External Noise
+1696,-100,-18,3.7,40,39,53.9,4.97,52.4,External Noise
+1697,-98,-20,4.7,45,33,65.2,6.09,37.3,External Noise
+1698,-94,-18,5.5,29,13,40.2,5.64,53.6,External Noise
+1699,-92,-17,1.8,45,37,46.1,6.64,54.1,External Noise
+1700,-93,-16,1.4,45,46,54.3,6.03,59.9,External Noise
+1701,-92,-19,1.7,37,54,45.8,6.58,49.4,External Noise
+1702,-99,-15,2.9,43,27,31.4,5.05,51.4,External Noise
+1703,-88,-18,1.2,42,44,69.3,7.11,50.6,External Noise
+1704,-93,-20,6.5,34,17,61.1,4.2,53.2,External Noise
+1705,-99,-20,5.2,35,44,75.6,7.41,55.5,External Noise
+1706,-100,-18,4.9,27,24,47.0,3.6,40.2,External Noise
+1707,-92,-19,1.4,53,53,35.5,5.67,53.2,External Noise
+1708,-98,-15,4.9,21,29,55.0,6.49,36.1,External Noise
+1709,-98,-20,2.0,70,49,57.1,3.74,51.4,External Noise
+1710,-100,-20,2.7,37,47,71.1,6.47,56.6,External Noise
+1711,-100,-18,6.1,61,29,33.9,5.21,59.4,External Noise
+1712,-99,-18,3.4,58,39,25.3,4.39,59.2,External Noise
+1713,-92,-15,0.2,35,38,38.3,5.7,53.6,External Noise
+1714,-100,-18,4.8,42,45,38.1,7.98,59.5,External Noise
+1715,-96,-20,4.4,76,29,73.4,7.17,35.7,External Noise
+1716,-92,-18,1.6,41,30,59.4,3.9,44.6,External Noise
+1717,-90,-16,6.1,63,19,45.0,6.08,45.7,External Noise
+1718,-96,-16,2.3,54,13,32.4,4.12,48.5,External Noise
+1719,-88,-19,6.0,39,49,62.3,5.86,38.4,External Noise
+1720,-88,-19,4.6,56,15,39.0,6.01,58.7,External Noise
+1721,-99,-19,2.2,76,14,63.6,6.94,57.0,External Noise
+1722,-94,-17,2.1,67,57,73.6,7.7,41.8,External Noise
+1723,-88,-19,0.7,31,6,65.7,6.25,41.7,External Noise
+1724,-91,-16,1.6,34,19,61.2,5.12,52.2,External Noise
+1725,-93,-19,3.5,58,35,62.7,5.18,56.3,External Noise
+1726,-93,-17,1.0,32,19,21.9,6.94,35.4,External Noise
+1727,-96,-17,1.6,62,17,65.5,3.8,58.2,External Noise
+1728,-93,-16,3.4,40,60,47.5,4.61,45.1,External Noise
+1729,-100,-16,5.1,44,51,38.8,6.25,53.6,External Noise
+1730,-91,-16,3.7,76,50,67.2,5.84,46.3,External Noise
+1731,-100,-19,3.6,45,52,22.4,5.24,54.1,External Noise
+1732,-100,-19,2.0,45,24,66.4,4.79,39.2,External Noise
+1733,-96,-16,6.4,64,38,74.2,5.59,51.2,External Noise
+1734,-99,-15,3.5,31,54,55.1,7.52,48.7,External Noise
+1735,-94,-17,2.3,21,16,47.2,7.53,57.4,External Noise
+1736,-93,-20,1.8,64,46,74.4,7.08,53.0,External Noise
+1737,-99,-20,0.8,48,45,41.8,5.86,44.6,External Noise
+1738,-88,-16,4.3,30,29,53.0,3.7,39.3,External Noise
+1739,-95,-16,6.1,75,14,29.7,4.15,54.2,External Noise
+1740,-100,-17,2.2,66,54,77.7,4.8,39.5,External Noise
+1741,-98,-19,0.0,68,21,20.7,5.74,47.5,External Noise
+1742,-88,-20,4.3,51,20,33.0,6.47,46.3,External Noise
+1743,-93,-20,4.2,20,20,72.9,4.75,50.7,External Noise
+1744,-97,-20,1.3,23,46,40.9,4.15,35.8,External Noise
+1745,-91,-16,2.1,78,10,22.9,5.38,39.5,External Noise
+1746,-90,-18,4.3,64,49,55.7,7.04,39.4,External Noise
+1747,-93,-15,4.1,79,7,25.6,4.85,44.2,External Noise
+1748,-94,-20,5.3,73,40,23.9,5.62,38.1,External Noise
+1749,-96,-18,3.7,53,18,61.7,6.25,37.7,External Noise
+1750,-89,-15,3.7,25,35,63.4,6.22,54.7,External Noise
+1751,-89,-18,3.0,74,25,35.6,6.09,50.6,External Noise
+1752,-98,-16,3.9,53,51,57.9,5.72,39.5,External Noise
+1753,-91,-19,5.0,32,5,27.1,5.59,54.9,External Noise
+1754,-89,-19,5.6,46,31,22.7,5.07,55.2,External Noise
+1755,-97,-20,4.5,64,23,35.3,3.81,42.5,External Noise
+1756,-92,-18,5.4,27,48,40.0,5.28,49.2,External Noise
+1757,-100,-19,1.4,73,26,75.3,5.66,46.9,External Noise
+1758,-100,-15,1.0,29,45,47.6,7.39,57.4,External Noise
+1759,-93,-17,6.5,23,58,51.3,6.04,52.0,External Noise
+1760,-92,-16,0.1,56,48,39.9,7.62,54.9,External Noise
+1761,-99,-19,2.0,21,26,79.0,6.32,56.1,External Noise
+1762,-91,-16,2.7,58,12,71.9,6.88,52.6,External Noise
+1763,-95,-15,0.2,46,10,49.8,4.57,46.3,External Noise
+1764,-96,-19,3.7,31,12,42.5,3.67,40.1,External Noise
+1765,-99,-17,3.5,71,35,74.3,4.19,43.5,External Noise
+1766,-93,-15,6.1,39,54,39.6,6.96,37.5,External Noise
+1767,-92,-15,6.9,33,51,22.2,5.24,56.6,External Noise
+1768,-99,-20,2.2,22,48,70.9,7.42,43.3,External Noise
+1769,-100,-20,3.6,62,52,38.7,6.1,42.8,External Noise
+1770,-97,-18,1.4,38,22,51.9,6.98,51.8,External Noise
+1771,-96,-19,1.1,27,5,77.5,6.02,37.6,External Noise
+1772,-92,-18,3.8,37,14,76.6,7.12,49.4,External Noise
+1773,-98,-20,2.2,77,26,52.4,3.73,35.7,External Noise
+1774,-90,-20,0.7,23,10,45.6,4.31,49.9,External Noise
+1775,-91,-15,5.9,64,33,57.0,4.91,55.4,External Noise
+1776,-89,-15,5.7,25,53,65.9,6.06,37.3,External Noise
+1777,-88,-15,3.3,49,24,61.1,6.7,46.6,External Noise
+1778,-97,-19,1.0,77,44,35.5,5.14,39.6,External Noise
+1779,-90,-18,5.5,76,25,47.2,3.64,46.9,External Noise
+1780,-95,-17,3.2,30,23,66.1,6.22,38.2,External Noise
+1781,-99,-17,5.7,70,11,39.6,6.42,54.8,External Noise
+1782,-92,-17,2.8,46,20,57.3,5.97,59.3,External Noise
+1783,-94,-20,2.4,72,49,55.5,7.03,45.9,External Noise
+1784,-88,-18,3.8,35,16,59.8,3.85,58.3,External Noise
+1785,-91,-17,0.8,58,34,39.5,3.94,46.1,External Noise
+1786,-96,-17,0.5,26,48,68.8,6.97,44.5,External Noise
+1787,-93,-15,4.6,25,18,69.0,7.49,57.6,External Noise
+1788,-90,-20,5.3,62,14,47.2,4.81,50.4,External Noise
+1789,-93,-19,1.4,76,25,38.0,7.07,52.0,External Noise
+1790,-94,-15,6.9,42,10,55.0,6.25,47.8,External Noise
+1791,-98,-18,0.4,77,40,78.1,3.5,49.0,External Noise
+1792,-95,-20,6.0,75,6,34.1,6.66,44.9,External Noise
+1793,-95,-15,2.7,44,32,52.7,6.48,46.9,External Noise
+1794,-97,-16,2.7,79,28,70.4,4.19,59.9,External Noise
+1795,-90,-19,0.9,24,46,20.9,6.75,47.2,External Noise
+1796,-94,-19,0.6,61,56,45.0,5.55,54.7,External Noise
+1797,-91,-17,4.4,49,37,45.4,7.19,44.6,External Noise
+1798,-97,-19,3.0,20,41,49.9,6.79,52.8,External Noise
+1799,-96,-17,6.5,56,28,22.0,3.67,47.1,External Noise
+1800,-95,-20,4.1,64,10,28.5,6.79,59.6,External Noise
